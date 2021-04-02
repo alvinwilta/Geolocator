@@ -17,6 +17,13 @@ namespace ABintang
     public partial class Form1 : Form
     {
         private List<PointLatLng> _points;
+        //private Button currentButton;
+        private Input input;
+        private Graph g;
+        // private Microsoft.Msagl.GraphViewerGdi.GraphRenderer renderer;
+        private Microsoft.Msagl.GraphViewerGdi.GViewer viewer;
+        private string filename;
+        //private string algorithm = "null";
         public Form1()
         {
             InitializeComponent();
@@ -90,7 +97,7 @@ namespace ABintang
 
         private void btnGetRouteInfo_Click(object sender, EventArgs e)
         {
-            var route = GoogleMapProvider.Instance.
+            /*var route = GoogleMapProvider.Instance.
                 GetRoute(_points[0], _points[1], false, false, 14);
             var r = new GMapRoute(route.Points, "My Route")
             {
@@ -98,7 +105,52 @@ namespace ABintang
             };
             var routes = new GMapOverlay("routes");
             routes.Routes.Add(r);
+            map.Overlays.Add(routes);*/
+            GMapOverlay routes = new GMapOverlay("routes");
+            List<PointLatLng> points = new List<PointLatLng>();
+            points.Add(_points[0]);
+            points.Add(_points[1]);
+            //points.Add(new PointLatLng(48.863868, 2.321554));
+            //points.Add(new PointLatLng(48.861017, 2.330030));
+            GMapRoute route = new GMapRoute(points, "A walk in the park");
+            route.Stroke = new Pen(Color.Red, 3);
+            routes.Routes.Add(route);
             map.Overlays.Add(routes);
+        }
+
+        private void BtnInputDir_Click(object sender, EventArgs e)
+        {
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                filename = ofd.FileName;
+                this.FileDir.Text = filename;
+                // parse input
+                input = new Input(filename);
+                // initialize graph
+                g = new Graph(input.Node);
+                g.InputGraph(input.DataNode, input.Kamus);
+                this.renderGraph();
+                // clear combobox
+                /*this.comboBox1.Items.Clear();
+                this.comboBox2.Items.Clear();
+                // add nodes to combobox
+                this.comboBox1.Items.AddRange(input.Kamus.Values.ToArray());
+                this.comboBox2.Items.AddRange(input.Kamus.Values.ToArray());
+                this.comboBox2.Items.Add("");*/
+                //button1.Enabled = true;
+            }
+        }
+
+        private void renderGraph()
+        {
+            // re-attach the graph to viewer
+            // essentially, "update" the view with latest graph
+            viewer.Graph = g.GetGraph();
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
