@@ -8,7 +8,7 @@ namespace ABintang{
         public Dictionary<int, Point> Kamus;
         public List<List<Point>> DataNode;
         public int Node;
-        private List<List<String>> Data;
+        public List<List<String>> Data;
         public Input(string filename)
         {
             Data = FileInput(filename); //list berisi string point

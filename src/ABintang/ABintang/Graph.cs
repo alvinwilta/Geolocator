@@ -144,6 +144,27 @@ namespace ABintang
             return kamus.FirstOrDefault(x => x.Value == y).Key;
         }
 
+        /// <summary>
+        /// Algoritma untuk membuat h(n) atau cost perkiraan ke tujuan
+        /// </summary>
+        public List<double> H_n(Dictionary<int,Point> kamus, Point target)
+        {
+            List<double> bracket = new List<double>();
+            foreach(var line in kamus)
+            {
+                bracket.Add(JarakEuclidian(line.Value, target));
+            }
+            return bracket;
+        }
+        /// <summary>
+        /// Algoritma utama A* shortest path
+        /// </summary>
+        public List<Point> ABintangShortestPath(Dictionary<int, Point> kamus, Point v, Point target)
+        {
+            //inisialisasi list h(n)
+            List<double> hn = H_n(kamus, target);
+
+        }
         /*
         /// <summary>
         /// Algoritma Utama Bread First Search

@@ -106,6 +106,9 @@ namespace ABintang
             var routes = new GMapOverlay("routes");
             routes.Routes.Add(r);
             map.Overlays.Add(routes);*/
+            g = new Graph(input.Node);
+            g.InputGraph(input.DataNode, input.Kamus);
+            //TODO
             GMapOverlay routes = new GMapOverlay("routes");
             List<PointLatLng> points = new List<PointLatLng>();
             points.Add(_points[0]);
