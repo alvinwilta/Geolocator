@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 
 namespace ABintang{
     class Input
@@ -48,8 +49,8 @@ namespace ABintang{
             foreach(var line in fileinput)
             {
                 List<Point> listofpoint = new List<Point>();
-                Point source = new Point(Convert.ToDouble(line[0]), Convert.ToDouble(line[1]), line[2]);
-                Point target = new Point(Convert.ToDouble(line[3]), Convert.ToDouble(line[4]), line[5]);
+                Point source = new Point(Convert.ToDouble(line[0], CultureInfo.InvariantCulture), Convert.ToDouble(line[1], CultureInfo.InvariantCulture), line[2]);
+                Point target = new Point(Convert.ToDouble(line[3], CultureInfo.InvariantCulture), Convert.ToDouble(line[4], CultureInfo.InvariantCulture), line[5]);
                 listofpoint.Add(source);
                 listofpoint.Add(target);
                 bracket.Add(listofpoint);
@@ -69,17 +70,28 @@ namespace ABintang{
             }
             return found;
         }*/
+        private bool Contains(List<Point>bahanbaku, Point line)
+        {
+            foreach(var x in bahanbaku)
+            {
+                if (x == line)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         private Dictionary<int, Point> KamusData(List<List<Point>> bracket)
         {
             List<Point> bahanbaku = new List<Point>();
             foreach (var line in bracket)
             {
-                if (!bahanbaku.Contains(line[0]))
+                if (!Contains(bahanbaku, line[0]))
                 {
                     //Cek apakah elemen ke 0 dari tiap line sudah ada di bahanbaku
                     bahanbaku.Add(line[0]);
                 }
-                if (!bahanbaku.Contains(line[1]))
+                if (!Contains(bahanbaku, line[1]))
                 {
                     //Cek apakah elemen ke 1 dari tiap line sudah ada di bahanbaku
                     bahanbaku.Add(line[1]);

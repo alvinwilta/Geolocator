@@ -21,7 +21,7 @@ namespace ABintang
         private Input input;
         private Graph g;
         // private Microsoft.Msagl.GraphViewerGdi.GraphRenderer renderer;
-        private Microsoft.Msagl.GraphViewerGdi.GViewer viewer;
+        //private Microsoft.Msagl.GraphViewerGdi.GViewer viewer;
         private string filename;
         //private string algorithm = "null";
         public Form1()
@@ -106,15 +106,16 @@ namespace ABintang
             var routes = new GMapOverlay("routes");
             routes.Routes.Add(r);
             map.Overlays.Add(routes);*/
-            g = new Graph(input.Node);
-            g.InputGraph(input.DataNode, input.Kamus);
-            //TODO
-            GMapOverlay routes = new GMapOverlay("routes");
+            
             List<PointLatLng> points = new List<PointLatLng>();
-            points.Add(_points[0]);
-            points.Add(_points[1]);
+            List<Point> arr_rute = g.ABintangShortestPath(input.Kamus, g.TranslatetoPoint(input.Kamus, 1), g.TranslatetoPoint(input.Kamus, 2));
+            foreach (var y in arr_rute)
+            {
+                points.Add(new PointLatLng(y.Getlat(), y.Getlongt()));
+            }
             //points.Add(new PointLatLng(48.863868, 2.321554));
             //points.Add(new PointLatLng(48.861017, 2.330030));
+            GMapOverlay routes = new GMapOverlay("routes");
             GMapRoute route = new GMapRoute(points, "A walk in the park");
             route.Stroke = new Pen(Color.Red, 3);
             routes.Routes.Add(route);
@@ -132,7 +133,40 @@ namespace ABintang
                 // initialize graph
                 g = new Graph(input.Node);
                 g.InputGraph(input.DataNode, input.Kamus);
-                this.renderGraph();
+                //TODO
+                //points.Add(_points[0]);
+                //points.Add(_points[1]);
+                foreach (var x in input.Kamus)
+                {
+                    double lat2 = x.Value.Getlat();
+                    double longt2 = x.Value.Getlongt();
+                    PointLatLng point2 = new PointLatLng(lat2, longt2);
+                    GMarkerGoogle marker2 = new GMarkerGoogle(point2, GMarkerGoogleType.blue_dot);
+                    //Create Overlay
+                    GMapOverlay markers2 = new GMapOverlay("markers");
+
+                    //Add all available markers to overlay
+                    markers2.Markers.Add(marker2);
+
+                    //Cover Map with Overlay
+                    map.Overlays.Add(markers2);
+                }
+                //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
+                map.DragButton = MouseButtons.Left;
+                map.MapProvider = GMapProviders.BingOSMap;
+                double lat = input.Kamus.ElementAt(0).Value.Getlat();
+                double longt = input.Kamus.ElementAt(0).Value.Getlongt();
+                map.Position = new PointLatLng(lat, longt);
+                map.MinZoom = 5;
+                map.MaxZoom = 100;
+                map.Zoom = 15;
+
+                //Create Overlay
+                GMapOverlay markers = new GMapOverlay("markers");
+
+                //Cover Map with Overlay
+                map.Overlays.Add(markers);
+                //this.renderGraph();
                 // clear combobox
                 /*this.comboBox1.Items.Clear();
                 this.comboBox2.Items.Clear();
@@ -143,13 +177,13 @@ namespace ABintang
                 //button1.Enabled = true;
             }
         }
-
+        /*
         private void renderGraph()
         {
             // re-attach the graph to viewer
             // essentially, "update" the view with latest graph
             viewer.Graph = g.GetGraph();
-        }
+        }*/
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {

@@ -6,11 +6,11 @@ namespace ABintang
 {
     class Graph
     {
-        Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+        //Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
         private int V; // Jumlah Node pada suatu graph
 
         //Struktur data Array of List
-        public double[][] adj;
+        public List<double>[] adj;
 
         /// <summary>
         /// Konstruktor
@@ -18,11 +18,13 @@ namespace ABintang
         public Graph(int v)
         {
             V = v;
+            adj = new List<double>[v];
             for (int i = 0; i < v; ++i)
             {
-                for (int j = 0; i < v; j++)
+                adj[i] = new List<double>();
+                for(int j = 0; j < v; j++)
                 {
-                    adj[i][j] = -1;
+                    adj[i].Add(0);
                 }
             }
         }
@@ -93,7 +95,7 @@ namespace ABintang
             {
                 nv.Attr.FillColor = Microsoft.Msagl.Drawing.Color.LightBlue;
             }
-        }*/
+        }
         /// <summary>
         /// Mendapatkan Graph yang akan dipilih untuk digunakan lebih lanjut
         /// </summary>
@@ -101,7 +103,7 @@ namespace ABintang
         {
             return this.graph;
         }
-
+        */
         /// <summary>
         /// Fungsi untuk membuat graph dari input dan sort secara alphabetical agar terurut
         /// </summary>
@@ -161,8 +163,8 @@ namespace ABintang
         /// </summary>
         public List<Point> ABintangShortestPath(Dictionary<int, Point> kamus, Point start, Point target)
         {
-            Node start_node = new Node(-1, TranslatetoInt(kamus, start));
-            Node end_node = new Node(-1, TranslatetoInt(kamus, target));
+            Node start_node = new Node(9999, TranslatetoInt(kamus, start));
+            Node end_node = new Node(9999, TranslatetoInt(kamus, target));
             //inisialisasi list h(n)
             List<double> hn = H_n(kamus, target);
             //List<Point> visited = new List<Point>();
@@ -189,7 +191,7 @@ namespace ABintang
                 {
                     List<int> path = new List<int>();
                     int current = current_node.Getposition();
-                    while (current != -1)
+                    while (current != 9999)
                     {
                         path.Add(current);
                         foreach(var x in close)
@@ -211,7 +213,7 @@ namespace ABintang
                 List<Node> children = new List<Node>();
                 for (int i = 0; i < V; i++)
                 {
-                    if(adj[current_node.Getposition()][i] != -1){
+                    if(adj[current_node.Getposition()][i] != 0){
                         Node new_node = new Node(current_node.Getposition(), i);
                         children.Add(new_node);
                     }
