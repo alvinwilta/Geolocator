@@ -10,7 +10,7 @@ namespace ABintang
         private int V; // Jumlah Node pada suatu graph
 
         //Struktur data Array of List
-        public List<int>[] adj;
+        public double[][] adj;
 
         /// <summary>
         /// Konstruktor
@@ -18,12 +18,16 @@ namespace ABintang
         public Graph(int v)
         {
             V = v;
-            adj = new List<int>[v];
             for (int i = 0; i < v; ++i)
-                adj[i] = new List<int>();
+            {
+                for (int j = 0; i < v; j++)
+                {
+                    adj[i][j] = -1;
+                }
+            }
         }
 
-        /// <summary>
+        /*/// <summary>
         ///Bertugas memberikan warna pada simpul yang akan ditunjuk ketika algoritma DFS digunakan
         /// </summary>
         public void ColorEdgeDFS(int v, int w, Dictionary<int, String> Kamus)
@@ -89,7 +93,7 @@ namespace ABintang
             {
                 nv.Attr.FillColor = Microsoft.Msagl.Drawing.Color.LightBlue;
             }
-        }
+        }*/
         /// <summary>
         /// Mendapatkan Graph yang akan dipilih untuk digunakan lebih lanjut
         /// </summary>
@@ -99,17 +103,48 @@ namespace ABintang
         }
 
         /// <summary>
+        /// Fungsi untuk membuat graph dari input dan sort secara alphabetical agar terurut
+        /// </summary>
+        public void InputGraph(List<List<Point>> DataNode, Dictionary<int, Point> Kamus)
+        {
+            foreach (var line in DataNode)
+            {
+                AddEdge(Kamus.FirstOrDefault(x => x.Value == line[0]).Key, Kamus.FirstOrDefault(x => x.Value == line[1]).Key, Kamus);
+            }
+        }
+
+        /// <summary>
         /// Fungsi untuk menambah simpul pada graf
         /// </summary>
-        void AddEdge(int v, int w, Dictionary<int, String> Kamus)
+        void AddEdge(int v, int w, Dictionary<int, Point> Kamus)
         {
             //JANGAN LUPA
-            adj[v].Add(w); // Add w to v's list.
-            adj[w].Add(v);
-            Microsoft.Msagl.Drawing.Edge e = graph.AddEdge(Kamus[v], Kamus[w]);
+            adj[v][w] = JarakEuclidian(TranslatetoPoint(Kamus,v), TranslatetoPoint(Kamus, w)); // Add w to v's list.
+            adj[w][v] = JarakEuclidian(TranslatetoPoint(Kamus, v), TranslatetoPoint(Kamus, w)); // Add w to v's list.
+            /*Microsoft.Msagl.Drawing.Edge e = graph.AddEdge(Kamus[v], Kamus[w]);
             e.Attr.ArrowheadAtSource = Microsoft.Msagl.Drawing.ArrowStyle.None;
-            e.Attr.ArrowheadAtTarget = Microsoft.Msagl.Drawing.ArrowStyle.None;
+            e.Attr.ArrowheadAtTarget = Microsoft.Msagl.Drawing.ArrowStyle.None;*/
         }
+        /// <summary>
+        /// Menghitung jarak euclidian
+        /// </summary>
+        public double JarakEuclidian(Point a, Point b)
+        {
+            double dX = Math.Abs(a.Getlat() - b.Getlat());
+            double dY = Math.Abs(a.Getlongt() - b.Getlongt());
+            return (Math.Sqrt(dX * dX + dY * dY));
+        }
+
+        public Point TranslatetoPoint(Dictionary<int, Point> kamus, int x)
+        {
+            return kamus.ElementAt(x).Value;
+        }
+        public int TranslatetoInt(Dictionary<int, Point> kamus, Point y)
+        {
+            return kamus.FirstOrDefault(x => x.Value == y).Key;
+        }
+
+        /*
         /// <summary>
         /// Algoritma Utama Bread First Search
         /// </summary>
@@ -224,7 +259,7 @@ namespace ABintang
                 }
             }
         }
-
+        
         /// <summary>
         /// Algoritma Utama Depth First Search
         /// , akan dibantu rekursif dengan fungsi DFSUtil
@@ -247,16 +282,9 @@ namespace ABintang
             }
             return child;
         }
+        */
 
-        public string TranslatetoString(Dictionary<int, string> kamus, int x)
-        {
-            return kamus.ElementAt(x).Value;
-        }
-        public int TranslatetoInt(Dictionary<int, string> kamus, string y)
-        {
-            return kamus.FirstOrDefault(x => x.Value == y).Key;
-        }
-
+        /*
         /// <summary>
         /// Memberikan Rekomendasi Teman bagi sudut awal secara DFS
         /// </summary>
@@ -382,21 +410,7 @@ namespace ABintang
             }
             return bracket2;
         }
-        /// <summary>
-        /// Fungsi untuk membuat graph dari input dan sort secara alphabetical agar terurut
-        /// </summary>
-        public void InputGraph(List<List<string>> DataNode, Dictionary<int, string> Kamus)
-        {
-            foreach (var line in DataNode)
-            {
-                AddEdge(Kamus.FirstOrDefault(x => x.Value == line[0]).Key, Kamus.FirstOrDefault(x => x.Value == line[1]).Key, Kamus);
-            }
-
-            for (int i = 0; i < V; i++)
-            {
-                adj[i].Sort();
-            }
-
-        }
+        */
+        
     }
 }

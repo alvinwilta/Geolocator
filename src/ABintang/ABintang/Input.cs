@@ -5,13 +5,15 @@ using System.Linq;
 namespace ABintang{
     class Input
     {
-        public Dictionary<int, string> Kamus;
-        public List<List<string>> DataNode;
+        public Dictionary<int, Point> Kamus;
+        public List<List<Point>> DataNode;
         public int Node;
+        private List<List<String>> Data;
         public Input(string filename)
         {
-            DataNode = FileInput(filename);
-            Kamus = KamusData(DataNode);
+            Data = FileInput(filename); //list berisi string point
+            DataNode = FilePoint(Data); //list berisi point source ke point target
+            Kamus = KamusData(DataNode); //Kamus berisi integer dan poinnya
             Node = Kamus.Count;
         }
         private List<List<string>> FileInput(string filename)
@@ -40,30 +42,57 @@ namespace ABintang{
             return bracket;
         }
 
-        private Dictionary<int, string> KamusData(List<List<string>> bracket)
+        private List<List<Point>> FilePoint(List<List<string>> fileinput)
         {
-            List<string> bahanbaku = new List<string>();
+            List<List<Point>> bracket = new List<List<Point>>();
+            foreach(var line in fileinput)
+            {
+                List<Point> listofpoint = new List<Point>();
+                Point source = new Point(Convert.ToDouble(line[0]), Convert.ToDouble(line[1]), line[2]);
+                Point target = new Point(Convert.ToDouble(line[3]), Convert.ToDouble(line[4]), line[5]);
+                listofpoint.Add(source);
+                listofpoint.Add(target);
+                bracket.Add(listofpoint);
+            }
+            return bracket;
+        }
+        /*private static bool SudahAda(List<Point>listofpoint, Point p)
+        {
+            bool found = false;
+            foreach(var line in listofpoint)
+            {
+                if(line == p)
+                {
+                    found = true;
+                    break;
+                }
+            }
+            return found;
+        }*/
+        private Dictionary<int, Point> KamusData(List<List<Point>> bracket)
+        {
+            List<Point> bahanbaku = new List<Point>();
             foreach (var line in bracket)
             {
-                if (!bahanbaku.Contains(line[2]))
+                if (!bahanbaku.Contains(line[0]))
                 {
                     //Cek apakah elemen ke 0 dari tiap line sudah ada di bahanbaku
-                    bahanbaku.Add(line[2]);
+                    bahanbaku.Add(line[0]);
                 }
-                if (!bahanbaku.Contains(line[5]))
+                if (!bahanbaku.Contains(line[1]))
                 {
                     //Cek apakah elemen ke 1 dari tiap line sudah ada di bahanbaku
-                    bahanbaku.Add(line[5]);
+                    bahanbaku.Add(line[1]);
                 }
             }
             //Himpunan bahanbaku sudah siap
             //Masukkan jumlah node ke variabel static global node
-            bahanbaku.Sort();
+            //bahanbaku.Sort();
 
             /*Tahap Pembuatan Dictionary*/
-            Dictionary<int, string> kamus = new Dictionary<int, string>();
+            Dictionary<int, Point> kamus = new Dictionary<int, Point>();
             int i = 0;
-            foreach (string elemen in bahanbaku)
+            foreach (var elemen in bahanbaku)
             {
                 kamus.Add(i, elemen);
                 i++;
