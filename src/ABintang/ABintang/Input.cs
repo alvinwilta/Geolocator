@@ -45,15 +45,15 @@ namespace ABintang{
             List<string> bahanbaku = new List<string>();
             foreach (var line in bracket)
             {
-                if (!bahanbaku.Contains(line[0]))
+                if (!bahanbaku.Contains(line[2]))
                 {
                     //Cek apakah elemen ke 0 dari tiap line sudah ada di bahanbaku
-                    bahanbaku.Add(line[0]);
+                    bahanbaku.Add(line[2]);
                 }
-                if (!bahanbaku.Contains(line[1]))
+                if (!bahanbaku.Contains(line[5]))
                 {
                     //Cek apakah elemen ke 1 dari tiap line sudah ada di bahanbaku
-                    bahanbaku.Add(line[1]);
+                    bahanbaku.Add(line[5]);
                 }
             }
             //Himpunan bahanbaku sudah siap
