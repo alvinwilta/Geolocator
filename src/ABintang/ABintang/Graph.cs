@@ -159,11 +159,89 @@ namespace ABintang
         /// <summary>
         /// Algoritma utama A* shortest path
         /// </summary>
-        public List<Point> ABintangShortestPath(Dictionary<int, Point> kamus, Point v, Point target)
+        public List<Point> ABintangShortestPath(Dictionary<int, Point> kamus, Point start, Point target)
         {
+            Node start_node = new Node(-1, TranslatetoInt(kamus, start));
+            Node end_node = new Node(-1, TranslatetoInt(kamus, target));
             //inisialisasi list h(n)
             List<double> hn = H_n(kamus, target);
+            //List<Point> visited = new List<Point>();
+            List<Node> open = new List<Node>();
+            List<Node> close = new List<Node>();
+            List<Point> path2 = new List<Point>();
+            open.Add(start_node);
+            while (open.Count > 0)
+            {
+                Node current_node = open[0];
+                foreach(Node n in open)
+                {
+                    if (n.Getfn() < current_node.Getfn())
+                    {
+                        current_node = n;
+                    }
+                }
 
+                close.Add(current_node);
+                open.Remove(current_node);
+
+                //Kalau targetnya ketemu
+                if (current_node == end_node)
+                {
+                    List<int> path = new List<int>();
+                    int current = current_node.Getposition();
+                    while (current != -1)
+                    {
+                        path.Add(current);
+                        foreach(var x in close)
+                        {
+                            if (x.Getposition() == current_node.Getparent())
+                            {
+                                current_node = x;
+                            }
+                        }
+                        path.Reverse();
+                        for(int i=0; i < path.Count; i++)
+                        {
+                            path2.Add(TranslatetoPoint(kamus, path[i]));
+                            return path2;
+                        }
+                    }
+                }
+
+                List<Node> children = new List<Node>();
+                for (int i = 0; i < V; i++)
+                {
+                    if(adj[current_node.Getposition()][i] != -1){
+                        Node new_node = new Node(current_node.Getposition(), i);
+                        children.Add(new_node);
+                    }
+                }
+                foreach (var child in children)
+                {
+                    foreach(var closed_child in close)
+                    {
+                        if (child == closed_child){
+                            continue;
+                        }
+                    }
+
+                    child.Setgn(adj[current_node.Getposition()][child.Getposition()]);
+                    child.Sethn(hn[current_node.Getposition()]);
+                    child.Setfn(child.Getgn() + child.Getfn());
+
+                    foreach(var open_node in open)
+                    {
+                        if (child == open_node && child.Getgn() > open_node.Getgn())
+                        {
+                            continue;
+                        }
+                    }
+
+                    open.Add(child);
+                }
+            }
+            //Tidak ketemu target
+            return path2;
         }
         /*
         /// <summary>
