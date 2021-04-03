@@ -108,7 +108,7 @@ namespace ABintang
             map.Overlays.Add(routes);*/
             label3.Text = "";
             List<PointLatLng> points = new List<PointLatLng>();
-            List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoPoint(input.Kamus, 1), g.TranslatetoPoint(input.Kamus, 9));
+            List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoPoint(input.Kamus, 0), g.TranslatetoPoint(input.Kamus, 10));
             for (int i = 0; i < Solusi.Count; i++)
             {
                 label3.Text += Solusi[i].Getname();
