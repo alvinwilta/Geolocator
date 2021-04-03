@@ -10,6 +10,8 @@ namespace ABintang{
         public List<List<Point>> DataNode;
         public int Node;
         public List<List<String>> Data;
+        public List<List<int>> hubungan;
+        public List<List<string>> temp_bracket;
         public Input(string filename)
         {
             Data = FileInput(filename); //list berisi string point
@@ -20,25 +22,52 @@ namespace ABintang{
         private List<List<string>> FileInput(string filename)
         {
             List<List<string>> bracket = new List<List<string>>();
+            temp_bracket = new List<List<string>>();
             // Read each line of the file into a string array. Each element
             // of the array is one line of the file.
             string[] lines = System.IO.File.ReadAllLines(filename);
-
+            hubungan = new List<List<int>>();
             // Display the file contents by using a foreach loop.
             int i = 0;
+            int jumlah_node = 0;
             foreach (string line in lines)
             {
                 if (i == 0)
                 {
+                    jumlah_node = Convert.ToInt32(line);
+                    i++;
+                }
+                else if (i > jumlah_node)
+                {
+                    List<string> line2 = line.Split(' ').ToList();
+                    List<int> baris = line2.Select(s => Convert.ToInt32(s)).ToList();
+                    hubungan.Add(baris);
                     i++;
                 }
                 else
                 {
                     List<string> line2 = line.Split(' ').ToList();
-                    bracket.Add(line2);
+                    temp_bracket.Add(line2);
                     i++;
                 }
                 // Use a tab to indent each line of the file.
+            }
+            for (int a = 0; a < hubungan.Count; a++)
+            {
+                for (int b = 0; b < a; b++)
+                {
+                    if (hubungan[a][b] == 1)
+                    {
+                        var row = new List<string>();
+                        row.Add(temp_bracket[b][0]);
+                        row.Add(temp_bracket[b][1]);
+                        row.Add(temp_bracket[b][2]);
+                        row.Add(temp_bracket[a][0]);
+                        row.Add(temp_bracket[a][1]);
+                        row.Add(temp_bracket[a][2]);
+                        bracket.Add(row);
+                    }
+                }
             }
             return bracket;
         }
