@@ -108,7 +108,7 @@ namespace ABintang
             map.Overlays.Add(routes);*/
             label3.Text = "";
             List<PointLatLng> points = new List<PointLatLng>();
-            List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoPoint(input.Kamus, 1), g.TranslatetoPoint(input.Kamus, 3));
+            List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoPoint(input.Kamus, 1), g.TranslatetoPoint(input.Kamus, 9));
             for (int i = 0; i < Solusi.Count; i++)
             {
                 label3.Text += Solusi[i].Getname();
@@ -117,7 +117,6 @@ namespace ABintang
                 {
                     label3.Text += " -> ";
                 }
-
             }
             //points.Add(new PointLatLng(48.863868, 2.321554));
             //points.Add(new PointLatLng(48.861017, 2.330030));
@@ -126,6 +125,8 @@ namespace ABintang
             route.Stroke = new Pen(Color.Red, 3);
             routes.Routes.Add(route);
             map.Overlays.Add(routes);
+            GMaps.Instance.OptimizeMapDb(null);
+            map.Refresh();
         }
 
         private void BtnInputDir_Click(object sender, EventArgs e)
@@ -148,6 +149,7 @@ namespace ABintang
                     double longt2 = x.Value.Getlongt();
                     PointLatLng point2 = new PointLatLng(lat2, longt2);
                     GMarkerGoogle marker2 = new GMarkerGoogle(point2, GMarkerGoogleType.blue_dot);
+                    marker2.ToolTipText = x.Value.Getname();
                     //Create Overlay
                     GMapOverlay markers2 = new GMapOverlay("markers");
 
@@ -156,6 +158,12 @@ namespace ABintang
 
                     //Cover Map with Overlay
                     map.Overlays.Add(markers2);
+
+                    GMaps.Instance.OptimizeMapDb(null);
+                    map.Refresh();
+
+                    //var labelMarker = new GmapMarkerWithLabel(point2, x.Value.Getname(), GMarkerGoogleType.blue_dot);
+                    //markers2.Markers.Add(labelMarker);
                 }
                 //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
                 map.DragButton = MouseButtons.Left;
