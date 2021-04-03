@@ -124,6 +124,29 @@ namespace ABintang
             //var routes = new GMapOverlay("routes");
             //routes.Routes.Add(r);
             //map.Overlays.Add(routes);
+            map.Overlays.Clear();
+            foreach (var x in input.Kamus)
+            {
+                double lat2 = x.Value.Getlat();
+                double longt2 = x.Value.Getlongt();
+                PointLatLng point2 = new PointLatLng(lat2, longt2);
+                GMarkerGoogle marker2 = new GMarkerGoogle(point2, GMarkerGoogleType.blue_dot);
+                marker2.ToolTipText = x.Value.Getname();
+                //Create Overlay
+                GMapOverlay markers2 = new GMapOverlay("markers");
+
+                //Add all available markers to overlay
+                markers2.Markers.Add(marker2);
+
+                //Cover Map with Overlay
+                map.Overlays.Add(markers2);
+
+                GMaps.Instance.OptimizeMapDb(null);
+                map.Refresh();
+
+                //var labelMarker = new GmapMarkerWithLabel(point2, x.Value.Getname(), GMarkerGoogleType.blue_dot);
+                //markers2.Markers.Add(labelMarker);
+            }
 
             label3.Text = "";
             List<PointLatLng> points = new List<PointLatLng>();
@@ -149,8 +172,16 @@ namespace ABintang
             route.Stroke = new Pen(Color.Red, 3);
             routes.Routes.Add(route);
             map.Overlays.Add(routes);
-            GMaps.Instance.OptimizeMapDb(null);
-            map.Refresh();
+
+            //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
+            map.DragButton = MouseButtons.Left;
+            //map.MapProvider = GMapProviders.BingOSMap;
+            double lat = input.Kamus.ElementAt(0).Value.Getlat();
+            double longt = input.Kamus.ElementAt(0).Value.Getlongt();
+            map.Position = new PointLatLng(lat, longt);
+            map.MinZoom = 5;
+            map.MaxZoom = 100;
+            map.Zoom = 16;
         }
 
         private void BtnInputDir_Click(object sender, EventArgs e)
@@ -197,22 +228,13 @@ namespace ABintang
                 map.Position = new PointLatLng(lat, longt);
                 map.MinZoom = 5;
                 map.MaxZoom = 100;
-                map.Zoom = 15;
+                map.Zoom = 16;
 
-                //Create Overlay
+                /*//Create Overlay
                 GMapOverlay markers = new GMapOverlay("markers");
 
                 //Cover Map with Overlay
-                map.Overlays.Add(markers);
-                //this.renderGraph();
-                // clear combobox
-                /*this.comboBox1.Items.Clear();
-                this.comboBox2.Items.Clear();
-                // add nodes to combobox
-                this.comboBox1.Items.AddRange(input.Kamus.Values.ToArray());
-                this.comboBox2.Items.AddRange(input.Kamus.Values.ToArray());
-                this.comboBox2.Items.Add("");*/
-                //button1.Enabled = true;
+                map.Overlays.Add(markers);*/
 
                 //Create Combobox of nodes
                 comboStart.Items.Clear();
