@@ -86,19 +86,7 @@ namespace ABintang{
             }
             return bracket;
         }
-        /*private static bool SudahAda(List<Point>listofpoint, Point p)
-        {
-            bool found = false;
-            foreach(var line in listofpoint)
-            {
-                if(line == p)
-                {
-                    found = true;
-                    break;
-                }
-            }
-            return found;
-        }*/
+
         private bool Contains(List<Point>bahanbaku, Point line)
         {
             foreach(var x in bahanbaku)
