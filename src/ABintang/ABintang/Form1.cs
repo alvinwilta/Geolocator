@@ -109,6 +109,7 @@ namespace ABintang
             label3.Text = "";
             List<PointLatLng> points = new List<PointLatLng>();
             List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoPoint(input.Kamus, 0), g.TranslatetoPoint(input.Kamus, 10));
+            double jarak = 0;
             for (int i = 0; i < Solusi.Count; i++)
             {
                 label3.Text += Solusi[i].Getname();
@@ -118,6 +119,9 @@ namespace ABintang
                     label3.Text += " -> ";
                 }
             }
+            label3.Text += "\nJarak =";
+            label3.Text += Convert.ToString(g.HitungJarak(input.Kamus, Solusi));
+            label3.Text += " km";
             //points.Add(new PointLatLng(48.863868, 2.321554));
             //points.Add(new PointLatLng(48.861017, 2.330030));
             GMapOverlay routes = new GMapOverlay("routes");

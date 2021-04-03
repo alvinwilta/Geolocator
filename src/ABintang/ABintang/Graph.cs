@@ -176,6 +176,16 @@ namespace ABintang
             //Tidak ketemu target
             return path2;
         }
+
+        public double HitungJarak(Dictionary<int,Point> kamus, List<Point> path)
+        {
+            double jarak = 0;
+            for(int i = 0; i < path.Count-1; i++)
+            {
+                jarak += adj[TranslatetoInt(kamus, path[i])][TranslatetoInt(kamus, path[i+1])];
+            }
+            return jarak;
+        }
         
     }
 }
