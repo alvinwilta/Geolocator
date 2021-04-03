@@ -24,10 +24,22 @@ namespace ABintang
         //private Microsoft.Msagl.GraphViewerGdi.GViewer viewer;
         private string filename;
         //private string algorithm = "null";
+        private List<string> nodelist1;
+        private List<string> nodelist2;
         public Form1()
         {
             InitializeComponent();
             _points = new List<PointLatLng>();
+            map.MapProvider = GMapProviders.BingOSMap;
+            map2.MapProvider = GMapProviders.BingOSMap;
+            map.DragButton = MouseButtons.Left;
+            map2.DragButton = MouseButtons.Left;
+            map.MinZoom = 5;
+            map.MaxZoom = 100;
+            map2.MinZoom = 5;
+            map2.MaxZoom = 100;
+            nodelist1 = new List<string>();
+            nodelist2 = new List<string>();
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -43,13 +55,9 @@ namespace ABintang
         private void button1_Click(object sender, EventArgs e)
         {
             //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
-            map.DragButton = MouseButtons.Left;
-            map.MapProvider = GMapProviders.BingOSMap;
             double lat = Convert.ToDouble(txtLat.Text);
             double longt = Convert.ToDouble(txtLong.Text);
             map.Position = new PointLatLng(lat, longt);
-            map.MinZoom = 5;
-            map.MaxZoom = 100;
             map.Zoom = 10;
 
             PointLatLng point = new PointLatLng(lat,longt);
@@ -63,6 +71,8 @@ namespace ABintang
 
             //Cover Map with Overlay
             map.Overlays.Add(markers);
+
+            
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -87,7 +97,15 @@ namespace ABintang
 
         private void btnAddPoint_Click(object sender, EventArgs e)
         {
-            _points.Add(new PointLatLng(Convert.ToDouble(txtLat.Text), Convert.ToDouble(txtLong.Text)));
+            if (checkInputValid(txtLat.Text) && checkInputValid(txtLong.Text))
+            {
+                labelError1.Text = "";
+                _points.Add(new PointLatLng(Convert.ToDouble(txtLat.Text), Convert.ToDouble(txtLong.Text)));
+            }
+            else
+            {
+                labelError1.Text = "Wrong value";
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -97,19 +115,20 @@ namespace ABintang
 
         private void btnGetRouteInfo_Click(object sender, EventArgs e)
         {
-            /*var route = GoogleMapProvider.Instance.
-                GetRoute(_points[0], _points[1], false, false, 14);
-            var r = new GMapRoute(route.Points, "My Route")
-            {
-                Stroke = new Pen(Color.Red, 5)
-            };
-            var routes = new GMapOverlay("routes");
-            routes.Routes.Add(r);
-            map.Overlays.Add(routes);*/
-            
+            //var route = GoogleMapProvider.Instance.
+            //    GetRoute(_points[0], _points[1], false, false, 14);
+            //var r = new GMapRoute(route.Points, "My Route")
+            //{
+            //    Stroke = new Pen(Color.Red, 5)
+            //};
+            //var routes = new GMapOverlay("routes");
+            //routes.Routes.Add(r);
+            //map.Overlays.Add(routes);
+
             label3.Text = "";
             List<PointLatLng> points = new List<PointLatLng>();
-            List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoPoint(input.Kamus, 0), g.TranslatetoPoint(input.Kamus, 10));
+            // buat variabel point, TranslatetoName() sama cek input
+            List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoName(input.Kamus, comboStart.SelectedItem.ToString()), g.TranslatetoName(input.Kamus, comboFinish.SelectedItem.ToString()));
             double jarak = 0;
             for (int i = 0; i < Solusi.Count; i++)
             {
@@ -172,7 +191,7 @@ namespace ABintang
                 }
                 //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
                 map.DragButton = MouseButtons.Left;
-                map.MapProvider = GMapProviders.BingOSMap;
+                //map.MapProvider = GMapProviders.BingOSMap;
                 double lat = input.Kamus.ElementAt(0).Value.Getlat();
                 double longt = input.Kamus.ElementAt(0).Value.Getlongt();
                 map.Position = new PointLatLng(lat, longt);
@@ -194,6 +213,17 @@ namespace ABintang
                 this.comboBox2.Items.AddRange(input.Kamus.Values.ToArray());
                 this.comboBox2.Items.Add("");*/
                 //button1.Enabled = true;
+
+                //Create Combobox of nodes
+                comboStart.Items.Clear();
+                comboFinish.Items.Clear();
+                foreach (var entry in input.Kamus)
+                {
+                    comboStart.Items.Add(entry.Value.Getname());
+                    comboFinish.Items.Add(entry.Value.Getname());
+                }
+                //comboStart.DataSource = nodelist1;
+                //comboFinish.DataSource = nodelist2;
             }
         }
         /*
@@ -221,8 +251,7 @@ namespace ABintang
 
         private void button2_Click(object sender, EventArgs e)
         {
-            map2.MapProvider = GMapProviders.BingOSMap;
-            map2.DragButton = MouseButtons.Left;
+            //map2.DragButton = MouseButtons.Left;
             if (checkInputValid(txtLatitude.Text) && checkInputValid(txtLongitude.Text))
             {
                 labelError2.Text = "";
@@ -245,13 +274,10 @@ namespace ABintang
 
         }
 
+        // default Position
         private void button3_Click(object sender, EventArgs e)
-        {
-            map2.MapProvider = GMapProviders.BingOSMap;
-            map2.DragButton = MouseButtons.Left;
+        {         
             map2.Position = new PointLatLng(-6.891235014541753, 107.61071274138624);
-            map2.MinZoom = 5;
-            map2.MaxZoom = 100;
             map2.Zoom = 15;
         }
 
@@ -269,6 +295,21 @@ namespace ABintang
         {
             Double d;
             return Double.TryParse(input, out d);
+        }
+
+        private void comboStart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboFinish_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboFinish_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

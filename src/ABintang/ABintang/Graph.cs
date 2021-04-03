@@ -88,6 +88,19 @@ namespace ABintang
         {
             return kamus.FirstOrDefault(x => x.Value == y).Key;
         }
+        public Point TranslatetoName(Dictionary<int, Point> kamus, string name)
+        {
+            Point p = new Point();
+            foreach (var entry in kamus)
+            {
+                if (entry.Value.Getname()==name)
+                {
+                    p = entry.Value;
+                    return p;
+                }
+            }
+            return p;
+        }
 
         /// <summary>
         /// Algoritma untuk membuat h(n) atau cost perkiraan ke tujuan
