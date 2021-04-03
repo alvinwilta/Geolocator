@@ -26,6 +26,8 @@ namespace ABintang
         //private string algorithm = "null";
         private List<string> nodelist1;
         private List<string> nodelist2;
+        private double latitude;
+        private double longitude;
         public Form1()
         {
             InitializeComponent();
@@ -125,6 +127,8 @@ namespace ABintang
             //routes.Routes.Add(r);
             //map.Overlays.Add(routes);
             map.Overlays.Clear();
+            latitude = map.Position.Lat;
+            longitude = map.Position.Lng;
             foreach (var x in input.Kamus)
             {
                 double lat2 = x.Value.Getlat();
@@ -175,10 +179,11 @@ namespace ABintang
 
             //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
             map.DragButton = MouseButtons.Left;
+            
             //map.MapProvider = GMapProviders.BingOSMap;
-            double lat = input.Kamus.ElementAt(0).Value.Getlat();
-            double longt = input.Kamus.ElementAt(0).Value.Getlongt();
-            map.Position = new PointLatLng(lat, longt);
+            //double lat = input.Kamus.ElementAt(0).Value.Getlat();
+            //double longt = input.Kamus.ElementAt(0).Value.Getlongt();
+            map.Position = new PointLatLng(latitude, longitude);
             map.MinZoom = 5;
             map.MaxZoom = 100;
             map.Zoom = 16;
