@@ -141,8 +141,8 @@ namespace ABintang
                 //Cover Map with Overlay
                 map.Overlays.Add(markers2);
 
-                GMaps.Instance.OptimizeMapDb(null);
-                map.Refresh();
+               /* GMaps.Instance.OptimizeMapDb(null);
+                map.Refresh();*/
 
                 //var labelMarker = new GmapMarkerWithLabel(point2, x.Value.Getname(), GMarkerGoogleType.blue_dot);
                 //markers2.Markers.Add(labelMarker);
@@ -214,8 +214,8 @@ namespace ABintang
                     //Cover Map with Overlay
                     map.Overlays.Add(markers2);
 
-                    GMaps.Instance.OptimizeMapDb(null);
-                    map.Refresh();
+                    /*GMaps.Instance.OptimizeMapDb(null);
+                    map.Refresh();*/
 
                     //var labelMarker = new GmapMarkerWithLabel(point2, x.Value.Getname(), GMarkerGoogleType.blue_dot);
                     //markers2.Markers.Add(labelMarker);
