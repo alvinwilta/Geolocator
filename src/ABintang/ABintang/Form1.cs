@@ -106,12 +106,18 @@ namespace ABintang
             var routes = new GMapOverlay("routes");
             routes.Routes.Add(r);
             map.Overlays.Add(routes);*/
-            
+            label3.Text = "";
             List<PointLatLng> points = new List<PointLatLng>();
-            List<Point> arr_rute = g.ABintangShortestPath(input.Kamus, g.TranslatetoPoint(input.Kamus, 1), g.TranslatetoPoint(input.Kamus, 2));
-            foreach (var y in arr_rute)
+            List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoPoint(input.Kamus, 1), g.TranslatetoPoint(input.Kamus, 3));
+            for (int i = 0; i < Solusi.Count; i++)
             {
-                points.Add(new PointLatLng(y.Getlat(), y.Getlongt()));
+                label3.Text += Solusi[i].Getname();
+                points.Add(new PointLatLng(Solusi[i].Getlat(), Solusi[i].Getlongt()));
+                if (i != Solusi.Count - 1)
+                {
+                    label3.Text += " -> ";
+                }
+
             }
             //points.Add(new PointLatLng(48.863868, 2.321554));
             //points.Add(new PointLatLng(48.861017, 2.330030));
@@ -186,6 +192,11 @@ namespace ABintang
         }*/
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

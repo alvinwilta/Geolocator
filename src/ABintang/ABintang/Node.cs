@@ -16,8 +16,8 @@ namespace ABintang
 
         public Node()
         {
-            parent = -1;
-            position = -1;
+            parent = 9999;
+            position = 9999;
             gn = 0;
             hn = 0;
             fn = 0;

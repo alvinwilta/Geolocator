@@ -43,6 +43,7 @@ namespace ABintang
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,6 +63,7 @@ namespace ABintang
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.BtnInputDir);
             this.splitContainer1.Panel2.Controls.Add(this.FileDir);
             this.splitContainer1.Panel2.Controls.Add(this.FileDirectory);
@@ -227,6 +229,16 @@ namespace ABintang
             this.ofd.FilterIndex = 2;
             this.ofd.RestoreDirectory = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(22, 269);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 17);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Default";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -260,6 +272,7 @@ namespace ABintang
         private System.Windows.Forms.Label FileDirectory;
         private System.Windows.Forms.Button BtnInputDir;
         private System.Windows.Forms.OpenFileDialog ofd;
+        private System.Windows.Forms.Label label3;
     }
 }
 

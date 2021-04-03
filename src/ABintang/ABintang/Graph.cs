@@ -194,20 +194,23 @@ namespace ABintang
                     while (current != 9999)
                     {
                         path.Add(current);
-                        foreach(var x in close)
+                        current = current_node.Getparent();
+                        foreach (Node x in close)
                         {
-                            if (x.Getposition() == current_node.Getparent())
+                            //Console.WriteLine(x.Getposition());
+                            if (x.Getposition() == current_node.Getparent() && current != 9999)
                             {
                                 current_node = x;
                             }
                         }
-                        path.Reverse();
-                        for(int i=0; i < path.Count; i++)
-                        {
-                            path2.Add(TranslatetoPoint(kamus, path[i]));
-                            return path2;
-                        }
                     }
+                    Console.WriteLine("length path :" + path.Count);
+                    path.Reverse();
+                    for(int i=0; i < path.Count; i++)
+                    {
+                         path2.Add(TranslatetoPoint(kamus, path[i]));
+                    }
+                    return path2;
                 }
 
                 List<Node> children = new List<Node>();
@@ -218,27 +221,33 @@ namespace ABintang
                         children.Add(new_node);
                     }
                 }
+
                 foreach (var child in children)
                 {
-                    foreach(var closed_child in close)
+                    if (close.Any(x => x.Getposition() == child.Getposition()))
+                        continue;
+
+                    /*foreach(var closed_child in close)
                     {
                         if (child == closed_child){
                             continue;
                         }
-                    }
+                    }*/
 
                     child.Setgn(adj[current_node.Getposition()][child.Getposition()]);
                     child.Sethn(hn[current_node.Getposition()]);
                     child.Setfn(child.Getgn() + child.Getfn());
 
-                    foreach(var open_node in open)
+                    /*foreach(var open_node in open)
                     {
-                        if (child == open_node && child.Getgn() > open_node.Getgn())
+                        if (child.Getposition() == open_node.Getposition() && child.Getgn() > open_node.Getgn())
                         {
                             continue;
                         }
-                    }
-
+                    }*/
+                    if (open.Any(x => x.Getposition() == child.Getposition() && x.Getgn() > child.Getgn()))
+                        continue;
+                    
                     open.Add(child);
                 }
             }
