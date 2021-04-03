@@ -128,13 +128,27 @@ namespace ABintang
             e.Attr.ArrowheadAtTarget = Microsoft.Msagl.Drawing.ArrowStyle.None;*/
         }
         /// <summary>
-        /// Menghitung jarak euclidian
+        /// Menghitung jarak Haversine (penghitungan anti-flat earther)
         /// </summary>
         public double JarakEuclidian(Point a, Point b)
         {
-            double dX = Math.Abs(a.Getlat() - b.Getlat());
-            double dY = Math.Abs(a.Getlongt() - b.Getlongt());
-            return (Math.Sqrt(dX * dX + dY * dY));
+            //double dX = Math.Abs(a.Getlat() - b.Getlat());
+            //double dY = Math.Abs(a.Getlongt() - b.Getlongt());
+            //return (Math.Sqrt(dX * dX + dY * dY));
+
+            double dLat = this.toRadian(b.Getlat() - a.Getlat());
+            double dLon = this.toRadian(b.Getlongt() - a.Getlongt());
+            double x = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+               Math.Cos(this.toRadian(a.Getlat())) * Math.Cos(this.toRadian(b.Getlat())) *
+               Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+            double c = 2 * Math.Asin(Math.Min(1, Math.Sqrt(x)));
+            double d = 6371 * c;
+
+            return d;
+        }
+        private double toRadian(double val)
+        {
+            return (Math.PI / 180) * val;
         }
 
         public Point TranslatetoPoint(Dictionary<int, Point> kamus, int x)

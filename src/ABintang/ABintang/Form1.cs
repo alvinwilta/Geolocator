@@ -208,5 +208,62 @@ namespace ABintang
         {
 
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            map2.MapProvider = GMapProviders.BingOSMap;
+            map2.DragButton = MouseButtons.Left;
+            if (checkInputValid(txtLatitude.Text) && checkInputValid(txtLongitude.Text))
+            {
+                labelError2.Text = "";
+                double lat = Convert.ToDouble(txtLatitude.Text);
+                double lng = Convert.ToDouble(txtLongitude.Text);
+                map2.Position = new PointLatLng(lat, lng);
+                map2.MinZoom = 5;
+                map2.MaxZoom = 100;
+                map2.Zoom = 15;
+            } 
+            else
+            {
+                labelError2.Text = "Wrong input";
+            }
+            
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            map2.MapProvider = GMapProviders.BingOSMap;
+            map2.DragButton = MouseButtons.Left;
+            map2.Position = new PointLatLng(-6.891235014541753, 107.61071274138624);
+            map2.MinZoom = 5;
+            map2.MaxZoom = 100;
+            map2.Zoom = 15;
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gMapControl1_Load(object sender, EventArgs e)
+        {
+            map2.ShowCenter = false;
+            GMapOverlay markers = new GMapOverlay("markers");
+        }
+        private Boolean checkInputValid(String input)
+        {
+            Double d;
+            return Double.TryParse(input, out d);
+        }
     }
 }
