@@ -80,7 +80,9 @@ namespace ABintang{
             }
             return bracket;
         }
-
+        /// <summary>
+        /// Menghasilkan List of Point berisi data point dalam Kelas Point
+        /// </summary>
         private List<List<Point>> FilePoint(List<List<string>> fileinput)
         {
             List<List<Point>> bracket = new List<List<Point>>();
@@ -95,7 +97,9 @@ namespace ABintang{
             }
             return bracket;
         }
-
+        /// <summary>
+        /// Mengecek apakah terdapat suatu Point di dalam list of Point
+        /// </summary>
         private bool Contains(List<Point>bahanbaku, Point line)
         {
             foreach(var x in bahanbaku)
@@ -107,6 +111,9 @@ namespace ABintang{
             }
             return false;
         }
+        /// <summary>
+        /// Menghasilkan Map berisi korelasi antara integer dan Point
+        /// </summary>
         private Dictionary<int, Point> KamusData(List<List<Point>> bracket)
         {
             List<Point> bahanbaku = new List<Point>();
