@@ -106,6 +106,7 @@ namespace ABintang
             var routes = new GMapOverlay("routes");
             routes.Routes.Add(r);
             map.Overlays.Add(routes);*/
+            
             label3.Text = "";
             List<PointLatLng> points = new List<PointLatLng>();
             List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoPoint(input.Kamus, 0), g.TranslatetoPoint(input.Kamus, 10));
