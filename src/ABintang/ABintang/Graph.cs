@@ -67,15 +67,23 @@ namespace ABintang
 
             return d;
         }
+        /// <summary>
+        /// Konversi double ke Radian
+        /// </summary>
         private double toRadian(double val)
         {
             return (Math.PI / 180) * val;
         }
-
+        /// <summary>
+        /// Konversi Integer ke Pointnya sesuai Kamus
+        /// </summary>
         public Point TranslatetoPoint(Dictionary<int, Point> kamus, int x)
         {
             return kamus.ElementAt(x).Value;
         }
+        /// <summary>
+        /// Konversi Point ke Integernya sesuai Kamus
+        /// </summary>
         public int TranslatetoInt(Dictionary<int, Point> kamus, Point y)
         {
             return kamus.FirstOrDefault(x => x.Value == y).Key;
@@ -115,11 +123,10 @@ namespace ABintang
             Node end_node = new Node(9999, TranslatetoInt(kamus, target));
             //inisialisasi list h(n)
             List<double> hn = H_n(kamus, target);
-            //List<Point> visited = new List<Point>();
+            //Inisialisasi Node Open dan Close
             List<Node> open = new List<Node>();
             List<Node> close = new List<Node>();
             List<Point> path2 = new List<Point>();
-            double terendah = 999999;
             open.Add(start_node);
             while (open.Count > 0)
             {
@@ -176,24 +183,11 @@ namespace ABintang
                     if (close.Any(x => x.Getposition() == child.Getposition()))
                         continue;
 
-                    /*foreach(var closed_child in close)
-                    {
-                        if (child == closed_child){
-                            continue;
-                        }
-                    }*/
-
                     child.Setgn(adj[current_node.Getposition()][child.Getposition()]);
                     child.Sethn(hn[current_node.Getposition()]);
                     child.Setfn(child.Getgn() + child.Getfn());
 
-                    /*foreach(var open_node in open)
-                    {
-                        if (child.Getposition() == open_node.Getposition() && child.Getgn() > open_node.Getgn())
-                        {
-                            continue;
-                        }
-                    }*/
+                    //Apabila simpul anak ternyata sudah ada di list Open dan g(n) x lebih besar dari g(n) simpul anaknya
                     if (open.Any(x => x.Getposition() == child.Getposition() && x.Getgn() > child.Getgn()))
                         continue;
                     
@@ -203,7 +197,9 @@ namespace ABintang
             //Tidak ketemu target
             return path2;
         }
-
+        /// <summary>
+        /// Algoritma untuk menghitung jarak dari simpul awal ke simpul tujuan A*
+        /// </summary>
         public double HitungJarak(Dictionary<int,Point> kamus, List<Point> path)
         {
             double jarak = 0;
@@ -212,7 +208,6 @@ namespace ABintang
                 jarak += adj[TranslatetoInt(kamus, path[i])][TranslatetoInt(kamus, path[i+1])];
             }
             return jarak;
-        }
-        
+        } 
     }
 }

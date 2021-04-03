@@ -17,7 +17,7 @@ namespace ABintang
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            
+            /*
             string filename = "../../graph.txt";
             Input input = new Input(filename);
             Console.WriteLine("KAMUS:");
@@ -83,6 +83,7 @@ namespace ABintang
             }
             Console.WriteLine();
             Console.ReadKey();
+            */
         }
     }
 }

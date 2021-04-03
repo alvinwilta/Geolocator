@@ -12,6 +12,9 @@ namespace ABintang{
         public List<List<String>> Data;
         public List<List<int>> hubungan;
         public List<List<string>> temp_bracket;
+        /// <summary>
+        /// Konstruktor berparameter filename
+        /// </summary>
         public Input(string filename)
         {
             Data = FileInput(filename); //list berisi string point
@@ -19,6 +22,9 @@ namespace ABintang{
             Kamus = KamusData(DataNode); //Kamus berisi integer dan poinnya
             Node = Kamus.Count;
         }
+        /// <summary>
+        /// Menghasilkan List of string berisi data point dalam string
+        /// </summary>
         private List<List<string>> FileInput(string filename)
         {
             List<List<string>> bracket = new List<List<string>>();
@@ -32,22 +38,25 @@ namespace ABintang{
             int jumlah_node = 0;
             foreach (string line in lines)
             {
-                if (i == 0)
+                if (i != 0)
                 {
-                    jumlah_node = Convert.ToInt32(line);
-                    i++;
-                }
-                else if (i > jumlah_node)
-                {
-                    List<string> line2 = line.Split(' ').ToList();
-                    List<int> baris = line2.Select(s => Convert.ToInt32(s)).ToList();
-                    hubungan.Add(baris);
-                    i++;
+                    if (i > jumlah_node)
+                    {
+                        List<string> line2 = line.Split(' ').ToList();
+                        List<int> baris = line2.Select(s => Convert.ToInt32(s)).ToList();
+                        hubungan.Add(baris);
+                        i++;
+                    }
+                    else
+                    {
+                        List<string> line2 = line.Split(' ').ToList();
+                        temp_bracket.Add(line2);
+                        i++;
+                    }
                 }
                 else
                 {
-                    List<string> line2 = line.Split(' ').ToList();
-                    temp_bracket.Add(line2);
+                    jumlah_node = Convert.ToInt32(line);
                     i++;
                 }
                 // Use a tab to indent each line of the file.
@@ -86,19 +95,7 @@ namespace ABintang{
             }
             return bracket;
         }
-        /*private static bool SudahAda(List<Point>listofpoint, Point p)
-        {
-            bool found = false;
-            foreach(var line in listofpoint)
-            {
-                if(line == p)
-                {
-                    found = true;
-                    break;
-                }
-            }
-            return found;
-        }*/
+
         private bool Contains(List<Point>bahanbaku, Point line)
         {
             foreach(var x in bahanbaku)
@@ -128,7 +125,6 @@ namespace ABintang{
             }
             //Himpunan bahanbaku sudah siap
             //Masukkan jumlah node ke variabel static global node
-            //bahanbaku.Sort();
 
             /*Tahap Pembuatan Dictionary*/
             Dictionary<int, Point> kamus = new Dictionary<int, Point>();
