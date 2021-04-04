@@ -91,39 +91,20 @@ namespace ABintang
 
         private void btnGetRouteInfo_Click(object sender, EventArgs e)
         {
-            map.Overlays.Clear();
+            if (map.Overlays.Any(x => x.Id == "routes"))
+            {
+                GMapOverlay hapus = map.Overlays.First(x => x.Id == "routes");
+                map.Overlays.Remove(hapus);
+            }
             latitude = map.Position.Lat;
             longitude = map.Position.Lng;
             zoom = map.Zoom;
-            foreach (var x in input.Kamus)
-            {
-                double lat2 = x.Value.Getlat();
-                double longt2 = x.Value.Getlongt();
-                PointLatLng point2 = new PointLatLng(lat2, longt2);
-                GMarkerGoogle marker2 = new GMarkerGoogle(point2, GMarkerGoogleType.blue_dot);
-                var addresses = GetAddress(point2);
-                if(addresses != null)
-                {
-                    marker2.ToolTipText = x.Value.Getname() + String.Join(", ", addresses.ToArray());
-                }
-                else
-                {
-                    marker2.ToolTipText = x.Value.Getname();
-                }
-                //Create Overlay
-                GMapOverlay markers2 = new GMapOverlay("markers");
-
-                //Add all available markers to overlay
-                markers2.Markers.Add(marker2);
-
-                //Cover Map with Overlay
-                map.Overlays.Add(markers2);
-
-            }
-
+     
             label3.Text = "";
             List<PointLatLng> points = new List<PointLatLng>();
             // buat variabel point, TranslatetoName() sama cek input
+
+            //JANGAN LUPA COMBOBOX EXCEPTION HANDLER
             List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoName(input.Kamus, comboStart.SelectedItem.ToString()), g.TranslatetoName(input.Kamus, comboFinish.SelectedItem.ToString()));
             for (int i = 0; i < Solusi.Count; i++)
             {
@@ -166,6 +147,7 @@ namespace ABintang
                 //TODO
                 //points.Add(_points[0]);
                 //points.Add(_points[1]);
+                map.Overlays.Clear();
                 foreach (var x in input.Kamus)
                 {
                     double lat2 = x.Value.Getlat();
