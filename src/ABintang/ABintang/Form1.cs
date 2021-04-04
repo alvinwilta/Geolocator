@@ -54,29 +54,6 @@ namespace ABintang
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
-            double lat = Convert.ToDouble(txtLat.Text);
-            double longt = Convert.ToDouble(txtLong.Text);
-            map.Position = new PointLatLng(lat, longt);
-            map.Zoom = 10;
-
-            PointLatLng point = new PointLatLng(lat,longt);
-            GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.blue_dot);
-
-            //Create Overlay
-            GMapOverlay markers = new GMapOverlay("markers");
-
-            //Add all available markers to overlay
-            markers.Markers.Add(marker);
-
-            //Cover Map with Overlay
-            map.Overlays.Add(markers);
-
-            
-        }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
@@ -95,19 +72,6 @@ namespace ABintang
         private void map_Load(object sender, EventArgs e)
         {
             map.ShowCenter = false;
-        }
-
-        private void btnAddPoint_Click(object sender, EventArgs e)
-        {
-            if (checkInputValid(txtLat.Text) && checkInputValid(txtLong.Text))
-            {
-                labelError1.Text = "";
-                _points.Add(new PointLatLng(Convert.ToDouble(txtLat.Text), Convert.ToDouble(txtLong.Text)));
-            }
-            else
-            {
-                labelError1.Text = "Wrong value";
-            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
