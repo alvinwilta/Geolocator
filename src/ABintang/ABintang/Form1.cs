@@ -29,6 +29,9 @@ namespace ABintang
         private double latitude;
         private double longitude;
         private double zoom;
+        private double latitude2;
+        private double longitude2;
+        private double zoom2;
         //private GMapOverlay overlayTemp;
         //private GMarkerGoogle markerTemp;
         private int node;
@@ -318,9 +321,12 @@ namespace ABintang
                     
                 //}
                 map2.Overlays.Clear();
-                
+                latitude2 = map2.Position.Lat;
+                longitude2 = map2.Position.Lng;
+                zoom2 = map2.Zoom;
+
                 //var point = ;
-                MessageBox.Show(e.X + " " + e.Y);
+                //MessageBox.Show(e.X + " " + e.Y);
                 //Double lat = point.Lat;
                 //Double lng = point.Lng;
                 //PointLatLng tempPoint = new PointLatLng(lat, lng);
@@ -329,6 +335,12 @@ namespace ABintang
                 overlayTemp.Markers.Add(markerTemp);
                 map2.Overlays.Add(overlayTemp);
                 //newoverlay = true;
+                //map2.DragButton = MouseButtons.Left;
+
+                map2.Position = new PointLatLng(latitude2, longitude2);
+                map2.MinZoom = 3;
+                map2.MaxZoom = 100;
+                map2.Zoom = zoom2;
             }
         }
     }
