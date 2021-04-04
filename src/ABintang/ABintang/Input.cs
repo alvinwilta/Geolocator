@@ -22,6 +22,11 @@ namespace ABintang{
             Kamus = KamusData(DataNode); //Kamus berisi integer dan poinnya
             Node = Kamus.Count;
         }
+        public Input()
+        {
+            Data = new List<List<string>>();
+            hubungan = new List<List<int>>();
+        }
         /// <summary>
         /// Menghasilkan List of string berisi data point dalam string
         /// </summary>

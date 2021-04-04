@@ -29,6 +29,10 @@ namespace ABintang
         private double latitude;
         private double longitude;
         private double zoom;
+        //private GMapOverlay overlayTemp;
+        //private GMarkerGoogle markerTemp;
+        private int node;
+        private Boolean newoverlay;
         public Form1()
         {
             InitializeComponent();
@@ -43,6 +47,8 @@ namespace ABintang
             map2.MaxZoom = 100;
             nodelist1 = new List<string>();
             nodelist2 = new List<string>();
+            node = 0;
+            newoverlay = false;
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -231,6 +237,7 @@ namespace ABintang
                 map2.MinZoom = 3;
                 map2.MaxZoom = 100;
                 map2.Zoom = 15;
+                // inisialisasi input lagi tapi input kosong
             } 
             else
             {
@@ -259,7 +266,6 @@ namespace ABintang
         private void gMapControl1_Load(object sender, EventArgs e)
         {
             map2.ShowCenter = false;
-            GMapOverlay markers = new GMapOverlay("markers");
         }
         private Boolean checkInputValid(String input)
         {
@@ -296,6 +302,34 @@ namespace ABintang
                 return addresses;
             }
             return null;
+        }
+
+        private void map2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void map2_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                //if (!newoverlay)
+                //{
+                    
+                //}
+                map2.Overlays.Clear();
+                
+                //var point = ;
+                MessageBox.Show(e.X + " " + e.Y);
+                //Double lat = point.Lat;
+                //Double lng = point.Lng;
+                //PointLatLng tempPoint = new PointLatLng(lat, lng);
+                GMarkerGoogle markerTemp = new GMarkerGoogle(map2.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.blue_dot);
+                GMapOverlay overlayTemp = new GMapOverlay("markers");
+                overlayTemp.Markers.Add(markerTemp);
+                map2.Overlays.Add(overlayTemp);
+                //newoverlay = true;
+            }
         }
     }
 }

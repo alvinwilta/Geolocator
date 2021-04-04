@@ -58,6 +58,7 @@
             this.txtLongitude = new System.Windows.Forms.TextBox();
             this.txtLatitude = new System.Windows.Forms.TextBox();
             this.labelNavigate = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -196,7 +197,7 @@
             // BtnInputDir
             // 
             this.BtnInputDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnInputDir.Location = new System.Drawing.Point(170, 100);
+            this.BtnInputDir.Location = new System.Drawing.Point(171, 100);
             this.BtnInputDir.Margin = new System.Windows.Forms.Padding(2);
             this.BtnInputDir.Name = "BtnInputDir";
             this.BtnInputDir.Size = new System.Drawing.Size(64, 19);
@@ -208,7 +209,7 @@
             // FileDir
             // 
             this.FileDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileDir.Location = new System.Drawing.Point(16, 100);
+            this.FileDir.Location = new System.Drawing.Point(17, 100);
             this.FileDir.Margin = new System.Windows.Forms.Padding(2);
             this.FileDir.Name = "FileDir";
             this.FileDir.Size = new System.Drawing.Size(145, 20);
@@ -218,7 +219,7 @@
             // 
             this.FileDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FileDirectory.AutoSize = true;
-            this.FileDirectory.Location = new System.Drawing.Point(14, 84);
+            this.FileDirectory.Location = new System.Drawing.Point(15, 84);
             this.FileDirectory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FileDirectory.Name = "FileDirectory";
             this.FileDirectory.Size = new System.Drawing.Size(68, 13);
@@ -228,7 +229,7 @@
             // btnGetRouteInfo
             // 
             this.btnGetRouteInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetRouteInfo.Location = new System.Drawing.Point(17, 202);
+            this.btnGetRouteInfo.Location = new System.Drawing.Point(18, 202);
             this.btnGetRouteInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetRouteInfo.Name = "btnGetRouteInfo";
             this.btnGetRouteInfo.Size = new System.Drawing.Size(110, 26);
@@ -288,6 +289,7 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.button1);
             this.splitContainer2.Panel2.Controls.Add(this.label9);
             this.splitContainer2.Panel2.Controls.Add(this.textBox1);
             this.splitContainer2.Panel2.Controls.Add(this.labelError2);
@@ -333,6 +335,8 @@
             this.map2.TabIndex = 0;
             this.map2.Zoom = 0D;
             this.map2.Load += new System.EventHandler(this.gMapControl1_Load);
+            this.map2.Click += new System.EventHandler(this.map2_Click);
+            this.map2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.map2_MouseDoubleClick);
             // 
             // label9
             // 
@@ -447,6 +451,15 @@
             this.labelNavigate.Text = "Locate Map";
             this.labelNavigate.Click += new System.EventHandler(this.label4_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(19, 238);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,5 +519,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboFinish;
+        private System.Windows.Forms.Button button1;
     }
 }
