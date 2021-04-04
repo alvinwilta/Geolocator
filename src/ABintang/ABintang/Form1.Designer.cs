@@ -31,23 +31,24 @@ namespace ABintang
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.map = new GMap.NET.WindowsForms.GMapControl();
+            this.comboFinish = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboStart = new System.Windows.Forms.ComboBox();
+            this.labelError1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.BtnInputDir = new System.Windows.Forms.Button();
             this.FileDir = new System.Windows.Forms.TextBox();
             this.FileDirectory = new System.Windows.Forms.Label();
             this.btnGetRouteInfo = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnAddPoint = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtLong = new System.Windows.Forms.TextBox();
-            this.txtLat = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabLoadFile = new System.Windows.Forms.TabPage();
             this.tabManual = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.map2 = new GMap.NET.WindowsForms.GMapControl();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelError2 = new System.Windows.Forms.Label();
             this.buttonDefLocation = new System.Windows.Forms.Button();
             this.buttonAddPointManual = new System.Windows.Forms.Button();
@@ -58,14 +59,6 @@ namespace ABintang
             this.txtLongitude = new System.Windows.Forms.TextBox();
             this.txtLatitude = new System.Windows.Forms.TextBox();
             this.labelNavigate = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.labelError1 = new System.Windows.Forms.Label();
-            this.comboStart = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboFinish = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -103,13 +96,6 @@ namespace ABintang
             this.splitContainer1.Panel2.Controls.Add(this.FileDir);
             this.splitContainer1.Panel2.Controls.Add(this.FileDirectory);
             this.splitContainer1.Panel2.Controls.Add(this.btnGetRouteInfo);
-            this.splitContainer1.Panel2.Controls.Add(this.btnClear);
-            this.splitContainer1.Panel2.Controls.Add(this.btnAddPoint);
-            this.splitContainer1.Panel2.Controls.Add(this.button1);
-            this.splitContainer1.Panel2.Controls.Add(this.txtLong);
-            this.splitContainer1.Panel2.Controls.Add(this.txtLat);
-            this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(837, 484);
             this.splitContainer1.SplitterDistance = 566;
@@ -146,10 +132,72 @@ namespace ABintang
             this.map.Zoom = 0D;
             this.map.Load += new System.EventHandler(this.map_Load);
             // 
+            // comboFinish
+            // 
+            this.comboFinish.BackColor = System.Drawing.SystemColors.Window;
+            this.comboFinish.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboFinish.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.comboFinish.FormattingEnabled = true;
+            this.comboFinish.Location = new System.Drawing.Point(134, 162);
+            this.comboFinish.Name = "comboFinish";
+            this.comboFinish.Size = new System.Drawing.Size(109, 21);
+            this.comboFinish.TabIndex = 17;
+            this.comboFinish.SelectedIndexChanged += new System.EventHandler(this.comboFinish_SelectedIndexChanged_1);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(131, 144);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Finish Node";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 144);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Start Node";
+            // 
+            // comboStart
+            // 
+            this.comboStart.BackColor = System.Drawing.SystemColors.Window;
+            this.comboStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboStart.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.comboStart.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.comboStart.FormattingEnabled = true;
+            this.comboStart.Location = new System.Drawing.Point(16, 162);
+            this.comboStart.Name = "comboStart";
+            this.comboStart.Size = new System.Drawing.Size(109, 21);
+            this.comboStart.TabIndex = 13;
+            this.comboStart.SelectedIndexChanged += new System.EventHandler(this.comboStart_SelectedIndexChanged);
+            // 
+            // labelError1
+            // 
+            this.labelError1.AutoSize = true;
+            this.labelError1.ForeColor = System.Drawing.Color.Red;
+            this.labelError1.Location = new System.Drawing.Point(15, 129);
+            this.labelError1.Name = "labelError1";
+            this.labelError1.Size = new System.Drawing.Size(0, 13);
+            this.labelError1.TabIndex = 12;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 251);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // BtnInputDir
             // 
             this.BtnInputDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnInputDir.Location = new System.Drawing.Point(169, 35);
+            this.BtnInputDir.Location = new System.Drawing.Point(170, 100);
             this.BtnInputDir.Margin = new System.Windows.Forms.Padding(2);
             this.BtnInputDir.Name = "BtnInputDir";
             this.BtnInputDir.Size = new System.Drawing.Size(64, 19);
@@ -161,7 +209,7 @@ namespace ABintang
             // FileDir
             // 
             this.FileDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileDir.Location = new System.Drawing.Point(15, 35);
+            this.FileDir.Location = new System.Drawing.Point(16, 100);
             this.FileDir.Margin = new System.Windows.Forms.Padding(2);
             this.FileDir.Name = "FileDir";
             this.FileDir.Size = new System.Drawing.Size(145, 20);
@@ -171,7 +219,7 @@ namespace ABintang
             // 
             this.FileDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FileDirectory.AutoSize = true;
-            this.FileDirectory.Location = new System.Drawing.Point(13, 19);
+            this.FileDirectory.Location = new System.Drawing.Point(14, 84);
             this.FileDirectory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FileDirectory.Name = "FileDirectory";
             this.FileDirectory.Size = new System.Drawing.Size(68, 13);
@@ -181,7 +229,7 @@ namespace ABintang
             // btnGetRouteInfo
             // 
             this.btnGetRouteInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetRouteInfo.Location = new System.Drawing.Point(15, 262);
+            this.btnGetRouteInfo.Location = new System.Drawing.Point(17, 202);
             this.btnGetRouteInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetRouteInfo.Name = "btnGetRouteInfo";
             this.btnGetRouteInfo.Size = new System.Drawing.Size(110, 26);
@@ -189,86 +237,6 @@ namespace ABintang
             this.btnGetRouteInfo.Text = "Get Route";
             this.btnGetRouteInfo.UseVisualStyleBackColor = true;
             this.btnGetRouteInfo.Click += new System.EventHandler(this.btnGetRouteInfo_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(169, 118);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(64, 19);
-            this.btnClear.TabIndex = 6;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnAddPoint
-            // 
-            this.btnAddPoint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddPoint.Location = new System.Drawing.Point(169, 74);
-            this.btnAddPoint.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddPoint.Name = "btnAddPoint";
-            this.btnAddPoint.Size = new System.Drawing.Size(64, 19);
-            this.btnAddPoint.TabIndex = 5;
-            this.btnAddPoint.Text = "Add Point";
-            this.btnAddPoint.UseVisualStyleBackColor = true;
-            this.btnAddPoint.Click += new System.EventHandler(this.btnAddPoint_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(15, 161);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 26);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Load Into Map";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtLong
-            // 
-            this.txtLong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLong.Location = new System.Drawing.Point(15, 119);
-            this.txtLong.Margin = new System.Windows.Forms.Padding(2);
-            this.txtLong.Name = "txtLong";
-            this.txtLong.Size = new System.Drawing.Size(145, 20);
-            this.txtLong.TabIndex = 3;
-            this.txtLong.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // txtLat
-            // 
-            this.txtLat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLat.Location = new System.Drawing.Point(15, 75);
-            this.txtLat.Margin = new System.Windows.Forms.Padding(2);
-            this.txtLat.Name = "txtLat";
-            this.txtLat.Size = new System.Drawing.Size(145, 20);
-            this.txtLat.TabIndex = 2;
-            this.txtLat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 102);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Longitude";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 58);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Latitude";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // ofd
             // 
@@ -367,6 +335,22 @@ namespace ABintang
             this.map2.Zoom = 0D;
             this.map2.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(15, 171);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(62, 13);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Point Name";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(19, 189);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 12;
+            // 
             // labelError2
             // 
             this.labelError2.AutoSize = true;
@@ -464,85 +448,6 @@ namespace ABintang
             this.labelNavigate.Text = "Locate Map";
             this.labelNavigate.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 318);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Default";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // labelError1
-            // 
-            this.labelError1.AutoSize = true;
-            this.labelError1.ForeColor = System.Drawing.Color.Red;
-            this.labelError1.Location = new System.Drawing.Point(15, 146);
-            this.labelError1.Name = "labelError1";
-            this.labelError1.Size = new System.Drawing.Size(0, 13);
-            this.labelError1.TabIndex = 12;
-            // 
-            // comboStart
-            // 
-            this.comboStart.BackColor = System.Drawing.SystemColors.Window;
-            this.comboStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboStart.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboStart.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.comboStart.FormattingEnabled = true;
-            this.comboStart.Location = new System.Drawing.Point(15, 222);
-            this.comboStart.Name = "comboStart";
-            this.comboStart.Size = new System.Drawing.Size(109, 21);
-            this.comboStart.TabIndex = 13;
-            this.comboStart.SelectedIndexChanged += new System.EventHandler(this.comboStart_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 204);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Start Node";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(130, 204);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 13);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Finish Node";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(19, 189);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 12;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 171);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 13);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "Point Name";
-            // 
-            // comboFinish
-            // 
-            this.comboFinish.BackColor = System.Drawing.SystemColors.Window;
-            this.comboFinish.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboFinish.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboFinish.FormattingEnabled = true;
-            this.comboFinish.Location = new System.Drawing.Point(133, 222);
-            this.comboFinish.Name = "comboFinish";
-            this.comboFinish.Size = new System.Drawing.Size(109, 21);
-            this.comboFinish.TabIndex = 17;
-            this.comboFinish.SelectedIndexChanged += new System.EventHandler(this.comboFinish_SelectedIndexChanged_1);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,14 +478,7 @@ namespace ABintang
 
         #endregion
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtLong;
-        private System.Windows.Forms.TextBox txtLat;
-        private System.Windows.Forms.Label label2;
         private GMap.NET.WindowsForms.GMapControl map;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnAddPoint;
         private System.Windows.Forms.Button btnGetRouteInfo;
         private System.Windows.Forms.TextBox FileDir;
         private System.Windows.Forms.Label FileDirectory;
