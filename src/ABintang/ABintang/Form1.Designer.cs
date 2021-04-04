@@ -1,5 +1,4 @@
-﻿
-namespace ABintang
+﻿namespace ABintang
 {
     partial class Form1
     {
@@ -509,4 +508,3 @@ namespace ABintang
         private System.Windows.Forms.ComboBox comboFinish;
     }
 }
-

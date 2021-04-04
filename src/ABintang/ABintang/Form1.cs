@@ -82,15 +82,6 @@ namespace ABintang
 
         private void btnGetRouteInfo_Click(object sender, EventArgs e)
         {
-            //var route = GoogleMapProvider.Instance.
-            //    GetRoute(_points[0], _points[1], false, false, 14);
-            //var r = new GMapRoute(route.Points, "My Route")
-            //{
-            //    Stroke = new Pen(Color.Red, 5)
-            //};
-            //var routes = new GMapOverlay("routes");
-            //routes.Routes.Add(r);
-            //map.Overlays.Add(routes);
             map.Overlays.Clear();
             latitude = map.Position.Lat;
             longitude = map.Position.Lng;
@@ -147,7 +138,7 @@ namespace ABintang
             map.DragButton = MouseButtons.Left;
             
             map.Position = new PointLatLng(latitude, longitude);
-            map.MinZoom = 5;
+            map.MinZoom = 3;
             map.MaxZoom = 100;
             map.Zoom = zoom;
         }
@@ -189,12 +180,6 @@ namespace ABintang
 
                     //Cover Map with Overlay
                     map.Overlays.Add(markers2);
-
-                    /*GMaps.Instance.OptimizeMapDb(null);
-                    map.Refresh();*/
-
-                    //var labelMarker = new GmapMarkerWithLabel(point2, x.Value.Getname(), GMarkerGoogleType.blue_dot);
-                    //markers2.Markers.Add(labelMarker);
                 }
                 //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
                 map.DragButton = MouseButtons.Left;
@@ -202,15 +187,9 @@ namespace ABintang
                 double lat = input.GetMiddleCoords().Getlat();
                 double longt = input.GetMiddleCoords().Getlongt();
                 map.Position = new PointLatLng(lat, longt);
-                map.MinZoom = 5;
+                map.MinZoom = 3;
                 map.MaxZoom = 100;
                 map.Zoom = 16;
-
-                /*//Create Overlay
-                GMapOverlay markers = new GMapOverlay("markers");
-
-                //Cover Map with Overlay
-                map.Overlays.Add(markers);*/
 
                 //Create Combobox of nodes
                 comboStart.Items.Clear();
@@ -224,13 +203,6 @@ namespace ABintang
                 //comboFinish.DataSource = nodelist2;
             }
         }
-        /*
-        private void renderGraph()
-        {
-            // re-attach the graph to viewer
-            // essentially, "update" the view with latest graph
-            viewer.Graph = g.GetGraph();
-        }*/
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
@@ -256,7 +228,7 @@ namespace ABintang
                 double lat = Convert.ToDouble(txtLatitude.Text);
                 double lng = Convert.ToDouble(txtLongitude.Text);
                 map2.Position = new PointLatLng(lat, lng);
-                map2.MinZoom = 5;
+                map2.MinZoom = 3;
                 map2.MaxZoom = 100;
                 map2.Zoom = 15;
             } 
@@ -325,7 +297,5 @@ namespace ABintang
             }
             return null;
         }
-
-
     }
 }
