@@ -143,5 +143,24 @@ namespace ABintang{
             }
             return kamus;
         }
+
+        public Point GetMiddleCoords()
+        {
+            Double maxlat = Kamus.First().Value.Getlat();
+            Double maxlongt = Kamus.First().Value.Getlongt();
+            Double minlat = Kamus.First().Value.Getlat();
+            Double minlongt = Kamus.First().Value.Getlongt();
+            foreach (var entry in Kamus)
+            {
+                if (entry.Value.Getlat() > maxlat) { maxlat = entry.Value.Getlat(); }
+                if (entry.Value.Getlongt() > maxlongt) { maxlongt = entry.Value.Getlongt(); }
+                if (entry.Value.Getlat() < minlat) { minlat = entry.Value.Getlat(); }
+                if (entry.Value.Getlongt() < minlongt) { minlongt = entry.Value.Getlongt(); }
+            }
+            Double lat = minlat + (maxlat - minlat)/2;
+            Double longt = minlongt + (maxlongt - minlongt)/2;
+            Point temp = new Point(lat, longt, "COORDS");
+            return temp;
+        }
     }
 }

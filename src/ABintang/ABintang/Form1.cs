@@ -228,8 +228,8 @@ namespace ABintang
                 //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
                 map.DragButton = MouseButtons.Left;
                 //map.MapProvider = GMapProviders.BingOSMap;
-                double lat = input.Kamus.ElementAt(0).Value.Getlat();
-                double longt = input.Kamus.ElementAt(0).Value.Getlongt();
+                double lat = input.GetMiddleCoords().Getlat();
+                double longt = input.GetMiddleCoords().Getlongt();
                 map.Position = new PointLatLng(lat, longt);
                 map.MinZoom = 5;
                 map.MaxZoom = 100;
