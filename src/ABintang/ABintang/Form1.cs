@@ -28,6 +28,7 @@ namespace ABintang
         private List<string> nodelist2;
         private double latitude;
         private double longitude;
+        private double zoom;
         public Form1()
         {
             InitializeComponent();
@@ -93,13 +94,22 @@ namespace ABintang
             map.Overlays.Clear();
             latitude = map.Position.Lat;
             longitude = map.Position.Lng;
+            zoom = map.Zoom;
             foreach (var x in input.Kamus)
             {
                 double lat2 = x.Value.Getlat();
                 double longt2 = x.Value.Getlongt();
                 PointLatLng point2 = new PointLatLng(lat2, longt2);
                 GMarkerGoogle marker2 = new GMarkerGoogle(point2, GMarkerGoogleType.blue_dot);
-                marker2.ToolTipText = x.Value.Getname();
+                var addresses = GetAddress(point2);
+                if(addresses != null)
+                {
+                    marker2.ToolTipText = x.Value.Getname() + String.Join(", ", addresses.ToArray());
+                }
+                else
+                {
+                    marker2.ToolTipText = x.Value.Getname();
+                }
                 //Create Overlay
                 GMapOverlay markers2 = new GMapOverlay("markers");
 
@@ -109,18 +119,12 @@ namespace ABintang
                 //Cover Map with Overlay
                 map.Overlays.Add(markers2);
 
-               /* GMaps.Instance.OptimizeMapDb(null);
-                map.Refresh();*/
-
-                //var labelMarker = new GmapMarkerWithLabel(point2, x.Value.Getname(), GMarkerGoogleType.blue_dot);
-                //markers2.Markers.Add(labelMarker);
             }
 
             label3.Text = "";
             List<PointLatLng> points = new List<PointLatLng>();
             // buat variabel point, TranslatetoName() sama cek input
             List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoName(input.Kamus, comboStart.SelectedItem.ToString()), g.TranslatetoName(input.Kamus, comboFinish.SelectedItem.ToString()));
-            double jarak = 0;
             for (int i = 0; i < Solusi.Count; i++)
             {
                 label3.Text += Solusi[i].Getname();
@@ -133,10 +137,8 @@ namespace ABintang
             label3.Text += "\nJarak =";
             label3.Text += Convert.ToString(g.HitungJarak(input.Kamus, Solusi));
             label3.Text += " km";
-            //points.Add(new PointLatLng(48.863868, 2.321554));
-            //points.Add(new PointLatLng(48.861017, 2.330030));
             GMapOverlay routes = new GMapOverlay("routes");
-            GMapRoute route = new GMapRoute(points, "A walk in the park");
+            GMapRoute route = new GMapRoute(points, "rute");
             route.Stroke = new Pen(Color.Red, 3);
             routes.Routes.Add(route);
             map.Overlays.Add(routes);
@@ -144,13 +146,10 @@ namespace ABintang
             //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
             map.DragButton = MouseButtons.Left;
             
-            //map.MapProvider = GMapProviders.BingOSMap;
-            //double lat = input.Kamus.ElementAt(0).Value.Getlat();
-            //double longt = input.Kamus.ElementAt(0).Value.Getlongt();
             map.Position = new PointLatLng(latitude, longitude);
             map.MinZoom = 5;
             map.MaxZoom = 100;
-            map.Zoom = 16;
+            map.Zoom = zoom;
         }
 
         private void BtnInputDir_Click(object sender, EventArgs e)
@@ -173,7 +172,15 @@ namespace ABintang
                     double longt2 = x.Value.Getlongt();
                     PointLatLng point2 = new PointLatLng(lat2, longt2);
                     GMarkerGoogle marker2 = new GMarkerGoogle(point2, GMarkerGoogleType.blue_dot);
-                    marker2.ToolTipText = x.Value.Getname();
+                    var addresses = GetAddress(point2);
+                    if (addresses != null)
+                    {
+                        marker2.ToolTipText = x.Value.Getname() + String.Join(", ", addresses.ToArray());
+                    }
+                    else
+                    {
+                        marker2.ToolTipText = x.Value.Getname();
+                    }
                     //Create Overlay
                     GMapOverlay markers2 = new GMapOverlay("markers");
 
@@ -302,5 +309,23 @@ namespace ABintang
         {
 
         }
+
+        private List<string> GetAddress(PointLatLng point)
+        {
+            List<Placemark> placemarks = null;
+            var statusCode = GMapProviders.GoogleMap.GetPlacemarks(point, out placemarks);
+            if(/*statusCode == GeoCoderStatusCode.G_GEO_SUCCESS &&*/ placemarks!= null)
+            {
+                List<string> addresses = new List<string>();
+                foreach(var placemark in placemarks)
+                {
+                    addresses.Add(placemark.Address);
+                }
+                return addresses;
+            }
+            return null;
+        }
+
+
     }
 }

@@ -197,6 +197,7 @@ namespace ABintang
             //Tidak ketemu target
             return path2;
         }
+
         /// <summary>
         /// Algoritma untuk menghitung jarak dari simpul awal ke simpul tujuan A*
         /// </summary>
