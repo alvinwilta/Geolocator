@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using System.IO;
 
 namespace ABintang
 {
@@ -14,10 +16,10 @@ namespace ABintang
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+            /*Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-            /*
+            Application.Run(new Form1());*/
+            
             string filename = "../../graph.txt";
             Input input = new Input(filename);
             Console.WriteLine("KAMUS:");
@@ -82,8 +84,37 @@ namespace ABintang
 
             }
             Console.WriteLine();
+            try
+            {
+                //Pass the filepath and filename to the StreamWriter Constructor
+                StreamWriter sw = new StreamWriter("D:\\git\\IF2211_tucil3\\test\\Test.txt");
+                //Write a line of text
+                sw.WriteLine(Convert.ToString(input.Kamus.Count));
+                foreach(var a in input.Kamus)
+                {
+                    sw.WriteLine(Convert.ToString(a.Value.Getlat() + " " + a.Value.Getlongt() + " " + a.Value.Getname()));
+
+                }
+                foreach (var x in input.hubungan)
+                {
+                    foreach(var y in x)
+                    {
+                        sw.Write(Convert.ToString(y + " "));
+                    }
+                    sw.WriteLine();
+                }
+                sw.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
+            }
             Console.ReadKey();
-            */
+            
         }
     }
 }
