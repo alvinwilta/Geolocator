@@ -63,6 +63,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_511C7F53B43241959A45A79472D6B3B2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_51550AC199C9F893B72AE9018BF89730"
         "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
@@ -422,6 +428,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -700,6 +714,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_511C7F53B43241959A45A79472D6B3B2"
+            {
+            "SourcePath" = "8:..\\ABintang\\logo.ico"
+            "TargetName" = "8:logo.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_B32FCBCCB8CB449FB2C823D2052C924E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_51550AC199C9F893B72AE9018BF89730"
@@ -1308,7 +1342,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Geolocator"
         "ProductCode" = "8:{4CC10848-BDDA-4D6B-8A33-1CA4E39B243D}"
-        "PackageCode" = "8:{E11A0DD9-FD29-432B-952F-98DEF03E5192}"
+        "PackageCode" = "8:{3F1DAC64-B0CD-4581-8C6D-CB6CC4D9C14C}"
         "UpgradeCode" = "8:{85E680FC-9702-45A2-B30E-0EEC1CA1AF6B}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -1325,7 +1359,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_511C7F53B43241959A45A79472D6B3B2"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -1428,6 +1462,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_667CA6E92E3F4AF0B02F6B841FD171F5"
+            {
+            "Name" = "8:Geolocator"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_CEC287870ADB48DDAF69DD0138A69650"
+            "Folder" = "8:_F51CA03FBFDD42458C08ADF6DDC153C6"
+            "WorkingFolder" = "8:_B32FCBCCB8CB449FB2C823D2052C924E"
+            "Icon" = "8:_511C7F53B43241959A45A79472D6B3B2"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {

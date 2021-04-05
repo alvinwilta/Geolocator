@@ -367,7 +367,7 @@ namespace ABintang
                     }
                 }
                 sw.Close();
-                labelExport.Text = "File has been successfully created.";
+                labelExport.Text = "File created.";
                 input.ClearInputClass();
                 map2.Overlays.Clear();
                 comboNode1.Items.Clear();
