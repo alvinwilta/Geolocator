@@ -49,7 +49,10 @@
             this.map2 = new GMap.NET.WindowsForms.GMapControl();
             this.labelErrorPoint = new System.Windows.Forms.Label();
             this.labelErrorSisi = new System.Windows.Forms.Label();
+            this.labelErrorFilename = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.buttonExport = new System.Windows.Forms.Button();
@@ -71,9 +74,6 @@
             this.txtLatitude = new System.Windows.Forms.TextBox();
             this.labelNavigate = new System.Windows.Forms.Label();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.labelErrorFilename = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -164,7 +164,7 @@
             this.comboFinish.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboFinish.FormattingEnabled = true;
             this.comboFinish.Location = new System.Drawing.Point(179, 199);
-            this.comboFinish.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboFinish.Margin = new System.Windows.Forms.Padding(4);
             this.comboFinish.Name = "comboFinish";
             this.comboFinish.Size = new System.Drawing.Size(144, 24);
             this.comboFinish.TabIndex = 17;
@@ -198,7 +198,7 @@
             this.comboStart.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboStart.FormattingEnabled = true;
             this.comboStart.Location = new System.Drawing.Point(21, 199);
-            this.comboStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboStart.Margin = new System.Windows.Forms.Padding(4);
             this.comboStart.Name = "comboStart";
             this.comboStart.Size = new System.Drawing.Size(144, 24);
             this.comboStart.TabIndex = 13;
@@ -278,7 +278,7 @@
             this.tabControl.Controls.Add(this.tabLoadFile);
             this.tabControl.Controls.Add(this.tabManual);
             this.tabControl.Location = new System.Drawing.Point(0, 0);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1135, 635);
@@ -288,9 +288,9 @@
             // 
             this.tabLoadFile.Controls.Add(this.splitContainer1);
             this.tabLoadFile.Location = new System.Drawing.Point(4, 25);
-            this.tabLoadFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabLoadFile.Margin = new System.Windows.Forms.Padding(4);
             this.tabLoadFile.Name = "tabLoadFile";
-            this.tabLoadFile.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabLoadFile.Padding = new System.Windows.Forms.Padding(4);
             this.tabLoadFile.Size = new System.Drawing.Size(1127, 606);
             this.tabLoadFile.TabIndex = 0;
             this.tabLoadFile.Text = "Load File";
@@ -300,9 +300,9 @@
             // 
             this.tabManual.Controls.Add(this.splitContainer2);
             this.tabManual.Location = new System.Drawing.Point(4, 25);
-            this.tabManual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabManual.Margin = new System.Windows.Forms.Padding(4);
             this.tabManual.Name = "tabManual";
-            this.tabManual.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabManual.Padding = new System.Windows.Forms.Padding(4);
             this.tabManual.Size = new System.Drawing.Size(1127, 606);
             this.tabManual.TabIndex = 1;
             this.tabManual.Text = "Manual Point";
@@ -312,7 +312,7 @@
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(4, 4);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -406,6 +406,27 @@
             this.labelErrorSisi.TabIndex = 26;
             this.labelErrorSisi.Text = "labelException";
             // 
+            // labelErrorFilename
+            // 
+            this.labelErrorFilename.AutoSize = true;
+            this.labelErrorFilename.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorFilename.Location = new System.Drawing.Point(167, 501);
+            this.labelErrorFilename.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelErrorFilename.Name = "labelErrorFilename";
+            this.labelErrorFilename.Size = new System.Drawing.Size(99, 17);
+            this.labelErrorFilename.TabIndex = 25;
+            this.labelErrorFilename.Text = "labelException";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(21, 478);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(65, 17);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "Filename";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -417,6 +438,14 @@
             this.label12.TabIndex = 23;
             this.label12.Text = "Export to txt File";
             this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(25, 497);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(132, 22);
+            this.textBox1.TabIndex = 22;
             // 
             // label11
             // 
@@ -441,7 +470,7 @@
             // buttonExport
             // 
             this.buttonExport.Location = new System.Drawing.Point(24, 533);
-            this.buttonExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExport.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExport.Name = "buttonExport";
             this.buttonExport.Size = new System.Drawing.Size(100, 28);
             this.buttonExport.TabIndex = 19;
@@ -452,7 +481,7 @@
             // buttonAddSisi
             // 
             this.buttonAddSisi.Location = new System.Drawing.Point(211, 383);
-            this.buttonAddSisi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddSisi.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddSisi.Name = "buttonAddSisi";
             this.buttonAddSisi.Size = new System.Drawing.Size(100, 28);
             this.buttonAddSisi.TabIndex = 18;
@@ -473,7 +502,7 @@
             this.comboNode2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboNode2.FormattingEnabled = true;
             this.comboNode2.Location = new System.Drawing.Point(180, 346);
-            this.comboNode2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboNode2.Margin = new System.Windows.Forms.Padding(4);
             this.comboNode2.Name = "comboNode2";
             this.comboNode2.Size = new System.Drawing.Size(129, 24);
             this.comboNode2.TabIndex = 16;
@@ -483,7 +512,7 @@
             this.comboNode1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboNode1.FormattingEnabled = true;
             this.comboNode1.Location = new System.Drawing.Point(24, 346);
-            this.comboNode1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboNode1.Margin = new System.Windows.Forms.Padding(4);
             this.comboNode1.Name = "comboNode1";
             this.comboNode1.Size = new System.Drawing.Size(129, 24);
             this.comboNode1.TabIndex = 15;
@@ -511,7 +540,7 @@
             // textboxPointName
             // 
             this.textboxPointName.Location = new System.Drawing.Point(25, 233);
-            this.textboxPointName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textboxPointName.Margin = new System.Windows.Forms.Padding(4);
             this.textboxPointName.Name = "textboxPointName";
             this.textboxPointName.Size = new System.Drawing.Size(132, 22);
             this.textboxPointName.TabIndex = 12;
@@ -529,7 +558,7 @@
             // buttonDefLocation
             // 
             this.buttonDefLocation.Location = new System.Drawing.Point(147, 110);
-            this.buttonDefLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDefLocation.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDefLocation.Name = "buttonDefLocation";
             this.buttonDefLocation.Size = new System.Drawing.Size(180, 28);
             this.buttonDefLocation.TabIndex = 10;
@@ -540,7 +569,7 @@
             // buttonAddPointManual
             // 
             this.buttonAddPointManual.Location = new System.Drawing.Point(167, 230);
-            this.buttonAddPointManual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddPointManual.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddPointManual.Name = "buttonAddPointManual";
             this.buttonAddPointManual.Size = new System.Drawing.Size(100, 28);
             this.buttonAddPointManual.TabIndex = 8;
@@ -562,7 +591,7 @@
             // buttonLocate
             // 
             this.buttonLocate.Location = new System.Drawing.Point(24, 110);
-            this.buttonLocate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLocate.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLocate.Name = "buttonLocate";
             this.buttonLocate.Size = new System.Drawing.Size(100, 28);
             this.buttonLocate.TabIndex = 5;
@@ -574,7 +603,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(191, 52);
+            this.label5.Location = new System.Drawing.Point(190, 52);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 17);
             this.label5.TabIndex = 4;
@@ -584,7 +613,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 50);
+            this.label4.Location = new System.Drawing.Point(21, 50);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 17);
             this.label4.TabIndex = 3;
@@ -593,7 +622,7 @@
             // txtLongitude
             // 
             this.txtLongitude.Location = new System.Drawing.Point(193, 73);
-            this.txtLongitude.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLongitude.Margin = new System.Windows.Forms.Padding(4);
             this.txtLongitude.Name = "txtLongitude";
             this.txtLongitude.Size = new System.Drawing.Size(132, 22);
             this.txtLongitude.TabIndex = 2;
@@ -601,7 +630,7 @@
             // txtLatitude
             // 
             this.txtLatitude.Location = new System.Drawing.Point(24, 73);
-            this.txtLatitude.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLatitude.Margin = new System.Windows.Forms.Padding(4);
             this.txtLatitude.Name = "txtLatitude";
             this.txtLatitude.Size = new System.Drawing.Size(132, 22);
             this.txtLatitude.TabIndex = 1;
@@ -622,35 +651,6 @@
             // sfd
             // 
             this.sfd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(21, 478);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 17);
-            this.label13.TabIndex = 24;
-            this.label13.Text = "Filename";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(25, 497);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 22);
-            this.textBox1.TabIndex = 22;
-            // 
-            // labelErrorFilename
-            // 
-            this.labelErrorFilename.AutoSize = true;
-            this.labelErrorFilename.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorFilename.Location = new System.Drawing.Point(167, 501);
-            this.labelErrorFilename.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelErrorFilename.Name = "labelErrorFilename";
-            this.labelErrorFilename.Size = new System.Drawing.Size(99, 17);
-            this.labelErrorFilename.TabIndex = 25;
-            this.labelErrorFilename.Text = "labelException";
             // 
             // Form1
             // 
