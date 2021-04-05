@@ -16,43 +16,55 @@
         "Entry"
         {
         "MsmKey" = "8:_0CEE86986C1422E14C38F32949895ACD"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_0DA030E794195A856EEEBADFC3FF5F4F"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2D383758A6CD4330BFB517078F407F07"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_31A08A6CCCF51BFF1EAE1CD2F248AC62"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_35270CD4C9DE4193B6C7D72A75F3B9B4"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_385A4238F6396C3F0F21C4672A631508"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4746EAE0FCCDCA5A36C67482670EDBC8"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4F9717BB90E4A131EC81DBC7FDAD2149"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_51550AC199C9F893B72AE9018BF89730"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,19 +76,19 @@
         "Entry"
         {
         "MsmKey" = "8:_5988DDD1CD199AFF0654849CF1ADD64F"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5DFCE57EA37AEF8D880ED954A9EB92AB"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_61F3B66DD05E3242F9C071F2F59FE99B"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,7 +112,7 @@
         "Entry"
         {
         "MsmKey" = "8:_73AF1FFEF727075AAF25FC7F12DF9B80"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -112,7 +124,7 @@
         "Entry"
         {
         "MsmKey" = "8:_7A35ED2623AF729A25F333604394A866"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -130,13 +142,13 @@
         "Entry"
         {
         "MsmKey" = "8:_8334509E395503265DF4A2B1B4E1E650"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_8CD8AAC8BCFA4DF66F37C38088D0AE8F"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -154,7 +166,7 @@
         "Entry"
         {
         "MsmKey" = "8:_B966B75DCF15B8E0EF5DAB85F12908BA"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -171,14 +183,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "MsmKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_DA0840F533D953EC9D5D1FFA1FDB17F6"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -202,7 +214,7 @@
         "Entry"
         {
         "MsmKey" = "8:_F5FBC1DB772C4C1C448B2FD94C5E2578"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -226,7 +238,7 @@
         "Entry"
         {
         "MsmKey" = "8:_FBCB905C4E17A71DF6F1C325808B1CE6"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -250,7 +262,7 @@
         "Entry"
         {
         "MsmKey" = "8:_FE0D2C6386AFDDF585F8F87BA50791F6"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -262,7 +274,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C3F6277979464AB483E968AA92FDBB51"
+        "OwnerKey" = "8:_CEC287870ADB48DDAF69DD0138A69650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -403,6 +415,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -419,6 +439,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -510,6 +538,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2D383758A6CD4330BFB517078F407F07"
+            {
+            "SourcePath" = "8:..\\ABintang\\bin\\Debug\\x86\\SQLite.Interop.dll"
+            "TargetName" = "8:SQLite.Interop.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_A8AAFF3539234171A247838C860A43C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_31A08A6CCCF51BFF1EAE1CD2F248AC62"
             {
             "AssemblyRegister" = "3:1"
@@ -539,6 +587,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_35270CD4C9DE4193B6C7D72A75F3B9B4"
+            {
+            "SourcePath" = "8:..\\ABintang\\bin\\Debug\\x64\\SQLite.Interop.dll"
+            "TargetName" = "8:SQLite.Interop.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_4C1C804A02B743C28D1DC312BE022669"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_385A4238F6396C3F0F21C4672A631508"
@@ -1188,6 +1256,28 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_4C1C804A02B743C28D1DC312BE022669"
+                    {
+                    "Name" = "8:x64"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_A16F4526766340DBA7C7B0F39A1B3E75"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_A8AAFF3539234171A247838C860A43C1"
+                    {
+                    "Name" = "8:x86"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_047C4EBE357C472E9DF037DC9C3225AB"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_F51CA03FBFDD42458C08ADF6DDC153C6"
@@ -1737,7 +1827,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C3F6277979464AB483E968AA92FDBB51"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CEC287870ADB48DDAF69DD0138A69650"
             {
             "SourcePath" = "8:..\\ABintang\\obj\\Debug\\Geolocator.exe"
             "TargetName" = "8:"
