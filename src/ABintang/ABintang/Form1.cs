@@ -316,10 +316,34 @@ namespace ABintang
                 latitude2 = map2.Position.Lat;
                 longitude2 = map2.Position.Lng;
                 zoom2 = map2.Zoom;
+                foreach (var x in input.Kamus)
+                {
+                    double lat2 = x.Value.Getlat();
+                    double longt2 = x.Value.Getlongt();
+                    PointLatLng point2 = new PointLatLng(lat2, longt2);
+                    GMarkerGoogle marker2 = new GMarkerGoogle(point2, GMarkerGoogleType.blue_dot);
+                    var addresses = GetAddress(point2);
+                    if (addresses != null)
+                    {
+                        marker2.ToolTipText = x.Value.Getname() + String.Join(", ", addresses.ToArray());
+                    }
+                    else
+                    {
+                        marker2.ToolTipText = x.Value.Getname();
+                    }
+                    //Create Overlay
+                    GMapOverlay markers2 = new GMapOverlay("markers");
+
+                    //Add all available markers to overlay
+                    markers2.Markers.Add(marker2);
+
+                    //Cover Map with Overlay
+                    map2.Overlays.Add(markers2);
+                }
 
                 var point = map2.FromLocalToLatLng(e.X, e.Y);
                 tempPoint = new PointLatLng(point.Lat, point.Lng);
-                GMarkerGoogle markerTemp = new GMarkerGoogle(map2.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.blue_dot);
+                GMarkerGoogle markerTemp = new GMarkerGoogle(map2.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.red_dot);
                 GMapOverlay overlayTemp = new GMapOverlay("markers");
                 overlayTemp.Markers.Add(markerTemp);
                 map2.Overlays.Add(overlayTemp);
