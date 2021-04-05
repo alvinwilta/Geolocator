@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Globalization;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
@@ -372,16 +373,23 @@ namespace ABintang
                 sw.WriteLine(Convert.ToString(input.Kamus.Count));
                 foreach (var a in input.Kamus)
                 {
-                    sw.WriteLine(Convert.ToString(a.Value.Getlat() + " " + a.Value.Getlongt() + " " + a.Value.Getname()));
+                    sw.WriteLine(Convert.ToString(a.Value.Getlat() + " " + a.Value.Getlongt() + " " + a.Value.Getname()).Replace(",", "."));
 
                 }
-                foreach (var x in input.hubungan)
+                for(int x = 0; x < input.hubungan.Count; x++)
                 {
-                    foreach (var y in x)
+                    for (int y = 0; y < input.hubungan.ElementAt(x).Count; y++)
                     {
-                        sw.Write(Convert.ToString(y + " "));
+                        sw.Write(Convert.ToString(input.hubungan.ElementAt(x).ElementAt(y)).Replace(",", "."));
+                        if (y != input.hubungan.ElementAt(x).Count - 1)
+                        {
+                            sw.Write(" ");
+                        }
                     }
-                    sw.WriteLine();
+                    if (x != input.hubungan.Count - 1)
+                    {
+                        sw.WriteLine();
+                    }
                 }
                 sw.Close();
                 labelExport.Text = "File has been successfully created.";
