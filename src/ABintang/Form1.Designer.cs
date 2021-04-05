@@ -31,6 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.map = new GMap.NET.WindowsForms.GMapControl();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkAdjMat = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.labelErrorRoute = new System.Windows.Forms.Label();
@@ -76,15 +81,11 @@
             this.txtLatitude = new System.Windows.Forms.TextBox();
             this.labelNavigate = new System.Windows.Forms.Label();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabLoadFile.SuspendLayout();
             this.tabManual.SuspendLayout();
@@ -92,7 +93,6 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -162,6 +162,58 @@
             this.map.TabIndex = 0;
             this.map.Zoom = 0D;
             this.map.Load += new System.EventHandler(this.map_Load);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Google Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(70, 133);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(148, 14);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "Leonard Matheus - 13519215";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Google Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(86, 121);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(110, 14);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Alvin Wilta - 13519163";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Google Sans", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(116, 107);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(52, 12);
+            this.label15.TabIndex = 23;
+            this.label15.Text = "Created by:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Google Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label14.Location = new System.Drawing.Point(75, 82);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(137, 30);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Geolocator";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(104, 17);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(72, 73);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
             // 
             // checkAdjMat
             // 
@@ -257,7 +309,7 @@
             // BtnInputDir
             // 
             this.BtnInputDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnInputDir.Location = new System.Drawing.Point(177, 224);
+            this.BtnInputDir.Location = new System.Drawing.Point(178, 224);
             this.BtnInputDir.Margin = new System.Windows.Forms.Padding(2);
             this.BtnInputDir.Name = "BtnInputDir";
             this.BtnInputDir.Size = new System.Drawing.Size(64, 19);
@@ -269,7 +321,7 @@
             // FileDir
             // 
             this.FileDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileDir.Location = new System.Drawing.Point(22, 224);
+            this.FileDir.Location = new System.Drawing.Point(23, 224);
             this.FileDir.Margin = new System.Windows.Forms.Padding(2);
             this.FileDir.Name = "FileDir";
             this.FileDir.Size = new System.Drawing.Size(145, 20);
@@ -279,7 +331,7 @@
             // 
             this.FileDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FileDirectory.AutoSize = true;
-            this.FileDirectory.Location = new System.Drawing.Point(21, 208);
+            this.FileDirectory.Location = new System.Drawing.Point(22, 208);
             this.FileDirectory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FileDirectory.Name = "FileDirectory";
             this.FileDirectory.Size = new System.Drawing.Size(68, 13);
@@ -289,7 +341,7 @@
             // btnGetRouteInfo
             // 
             this.btnGetRouteInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetRouteInfo.Location = new System.Drawing.Point(22, 347);
+            this.btnGetRouteInfo.Location = new System.Drawing.Point(23, 347);
             this.btnGetRouteInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetRouteInfo.Name = "btnGetRouteInfo";
             this.btnGetRouteInfo.Size = new System.Drawing.Size(110, 26);
@@ -650,58 +702,6 @@
             // 
             this.sfd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(104, 17);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(72, 73);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Google Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label14.Location = new System.Drawing.Point(75, 82);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(137, 30);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "Geolocator";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Google Sans", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(116, 107);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(52, 12);
-            this.label15.TabIndex = 23;
-            this.label15.Text = "Created by:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Google Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(86, 121);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(110, 14);
-            this.label16.TabIndex = 24;
-            this.label16.Text = "Alvin Wilta - 13519163";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Google Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(70, 133);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(148, 14);
-            this.label17.TabIndex = 25;
-            this.label17.Text = "Leonard Matheus - 13519215";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -718,6 +718,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tabLoadFile.ResumeLayout(false);
             this.tabManual.ResumeLayout(false);
@@ -727,7 +728,6 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
