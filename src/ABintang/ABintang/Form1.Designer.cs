@@ -30,6 +30,7 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.map = new GMap.NET.WindowsForms.GMapControl();
+            this.labelErrorRoute = new System.Windows.Forms.Label();
             this.comboFinish = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -46,8 +47,16 @@
             this.tabManual = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.map2 = new GMap.NET.WindowsForms.GMapControl();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.buttonExport = new System.Windows.Forms.Button();
+            this.buttonAddSisi = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboNode2 = new System.Windows.Forms.ComboBox();
+            this.comboNode1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textboxPointName = new System.Windows.Forms.TextBox();
             this.labelError2 = new System.Windows.Forms.Label();
             this.buttonDefLocation = new System.Windows.Forms.Button();
             this.buttonAddPointManual = new System.Windows.Forms.Button();
@@ -58,7 +67,12 @@
             this.txtLongitude = new System.Windows.Forms.TextBox();
             this.txtLatitude = new System.Windows.Forms.TextBox();
             this.labelNavigate = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.labelErrorFilename = new System.Windows.Forms.Label();
+            this.labelErrorSisi = new System.Windows.Forms.Label();
+            this.labelErrorPoint = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -86,6 +100,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.labelErrorRoute);
             this.splitContainer1.Panel2.Controls.Add(this.comboFinish);
             this.splitContainer1.Panel2.Controls.Add(this.label8);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
@@ -131,6 +146,15 @@
             this.map.TabIndex = 0;
             this.map.Zoom = 0D;
             this.map.Load += new System.EventHandler(this.map_Load);
+            // 
+            // labelErrorRoute
+            // 
+            this.labelErrorRoute.AutoSize = true;
+            this.labelErrorRoute.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorRoute.Location = new System.Drawing.Point(15, 186);
+            this.labelErrorRoute.Name = "labelErrorRoute";
+            this.labelErrorRoute.Size = new System.Drawing.Size(0, 13);
+            this.labelErrorRoute.TabIndex = 18;
             // 
             // comboFinish
             // 
@@ -197,7 +221,7 @@
             // BtnInputDir
             // 
             this.BtnInputDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnInputDir.Location = new System.Drawing.Point(171, 100);
+            this.BtnInputDir.Location = new System.Drawing.Point(175, 100);
             this.BtnInputDir.Margin = new System.Windows.Forms.Padding(2);
             this.BtnInputDir.Name = "BtnInputDir";
             this.BtnInputDir.Size = new System.Drawing.Size(64, 19);
@@ -209,7 +233,7 @@
             // FileDir
             // 
             this.FileDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileDir.Location = new System.Drawing.Point(17, 100);
+            this.FileDir.Location = new System.Drawing.Point(21, 100);
             this.FileDir.Margin = new System.Windows.Forms.Padding(2);
             this.FileDir.Name = "FileDir";
             this.FileDir.Size = new System.Drawing.Size(145, 20);
@@ -219,7 +243,7 @@
             // 
             this.FileDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FileDirectory.AutoSize = true;
-            this.FileDirectory.Location = new System.Drawing.Point(15, 84);
+            this.FileDirectory.Location = new System.Drawing.Point(19, 84);
             this.FileDirectory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FileDirectory.Name = "FileDirectory";
             this.FileDirectory.Size = new System.Drawing.Size(68, 13);
@@ -229,7 +253,7 @@
             // btnGetRouteInfo
             // 
             this.btnGetRouteInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetRouteInfo.Location = new System.Drawing.Point(18, 202);
+            this.btnGetRouteInfo.Location = new System.Drawing.Point(21, 211);
             this.btnGetRouteInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetRouteInfo.Name = "btnGetRouteInfo";
             this.btnGetRouteInfo.Size = new System.Drawing.Size(110, 26);
@@ -289,9 +313,22 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.button1);
-            this.splitContainer2.Panel2.Controls.Add(this.label9);
+            this.splitContainer2.Panel2.Controls.Add(this.labelErrorPoint);
+            this.splitContainer2.Panel2.Controls.Add(this.labelErrorSisi);
+            this.splitContainer2.Panel2.Controls.Add(this.labelErrorFilename);
+            this.splitContainer2.Panel2.Controls.Add(this.label13);
+            this.splitContainer2.Panel2.Controls.Add(this.label12);
             this.splitContainer2.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer2.Panel2.Controls.Add(this.label11);
+            this.splitContainer2.Panel2.Controls.Add(this.label10);
+            this.splitContainer2.Panel2.Controls.Add(this.buttonExport);
+            this.splitContainer2.Panel2.Controls.Add(this.buttonAddSisi);
+            this.splitContainer2.Panel2.Controls.Add(this.label2);
+            this.splitContainer2.Panel2.Controls.Add(this.comboNode2);
+            this.splitContainer2.Panel2.Controls.Add(this.comboNode1);
+            this.splitContainer2.Panel2.Controls.Add(this.label1);
+            this.splitContainer2.Panel2.Controls.Add(this.label9);
+            this.splitContainer2.Panel2.Controls.Add(this.textboxPointName);
             this.splitContainer2.Panel2.Controls.Add(this.labelError2);
             this.splitContainer2.Panel2.Controls.Add(this.buttonDefLocation);
             this.splitContainer2.Panel2.Controls.Add(this.buttonAddPointManual);
@@ -338,6 +375,77 @@
             this.map2.Click += new System.EventHandler(this.map2_Click);
             this.map2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.map2_MouseDoubleClick);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(142, 265);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(42, 13);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Node 2";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(22, 265);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(42, 13);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Node 1";
+            // 
+            // buttonExport
+            // 
+            this.buttonExport.Location = new System.Drawing.Point(18, 433);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(75, 23);
+            this.buttonExport.TabIndex = 19;
+            this.buttonExport.Text = "Export to txt";
+            this.buttonExport.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddSisi
+            // 
+            this.buttonAddSisi.Location = new System.Drawing.Point(158, 311);
+            this.buttonAddSisi.Name = "buttonAddSisi";
+            this.buttonAddSisi.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddSisi.TabIndex = 18;
+            this.buttonAddSisi.Text = "Add Sisi";
+            this.buttonAddSisi.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 265);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 17;
+            // 
+            // comboNode2
+            // 
+            this.comboNode2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboNode2.FormattingEnabled = true;
+            this.comboNode2.Location = new System.Drawing.Point(135, 281);
+            this.comboNode2.Name = "comboNode2";
+            this.comboNode2.Size = new System.Drawing.Size(98, 21);
+            this.comboNode2.TabIndex = 16;
+            // 
+            // comboNode1
+            // 
+            this.comboNode1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboNode1.FormattingEnabled = true;
+            this.comboNode1.Location = new System.Drawing.Point(18, 281);
+            this.comboNode1.Name = "comboNode1";
+            this.comboNode1.Size = new System.Drawing.Size(98, 21);
+            this.comboNode1.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 242);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Add Sisi";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -347,12 +455,12 @@
             this.label9.TabIndex = 13;
             this.label9.Text = "Point Name";
             // 
-            // textBox1
+            // textboxPointName
             // 
-            this.textBox1.Location = new System.Drawing.Point(19, 189);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 12;
+            this.textboxPointName.Location = new System.Drawing.Point(19, 189);
+            this.textboxPointName.Name = "textboxPointName";
+            this.textboxPointName.Size = new System.Drawing.Size(100, 20);
+            this.textboxPointName.TabIndex = 12;
             // 
             // labelError2
             // 
@@ -451,14 +559,62 @@
             this.labelNavigate.Text = "Locate Map";
             this.labelNavigate.Click += new System.EventHandler(this.label4_Click);
             // 
-            // button1
+            // textBox1
             // 
-            this.button1.Location = new System.Drawing.Point(19, 238);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.textBox1.Location = new System.Drawing.Point(19, 404);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 22;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(14, 359);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(123, 20);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Export to txt File";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(16, 388);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(49, 13);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "Filename";
+            // 
+            // labelErrorFilename
+            // 
+            this.labelErrorFilename.AutoSize = true;
+            this.labelErrorFilename.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorFilename.Location = new System.Drawing.Point(125, 407);
+            this.labelErrorFilename.Name = "labelErrorFilename";
+            this.labelErrorFilename.Size = new System.Drawing.Size(76, 13);
+            this.labelErrorFilename.TabIndex = 25;
+            this.labelErrorFilename.Text = "labelException";
+            // 
+            // labelErrorSisi
+            // 
+            this.labelErrorSisi.AutoSize = true;
+            this.labelErrorSisi.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorSisi.Location = new System.Drawing.Point(16, 311);
+            this.labelErrorSisi.Name = "labelErrorSisi";
+            this.labelErrorSisi.Size = new System.Drawing.Size(76, 13);
+            this.labelErrorSisi.TabIndex = 26;
+            this.labelErrorSisi.Text = "labelException";
+            // 
+            // labelErrorPoint
+            // 
+            this.labelErrorPoint.AutoSize = true;
+            this.labelErrorPoint.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorPoint.Location = new System.Drawing.Point(16, 215);
+            this.labelErrorPoint.Name = "labelErrorPoint";
+            this.labelErrorPoint.Size = new System.Drawing.Size(76, 13);
+            this.labelErrorPoint.TabIndex = 27;
+            this.labelErrorPoint.Text = "labelException";
             // 
             // Form1
             // 
@@ -517,8 +673,22 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textboxPointName;
         private System.Windows.Forms.ComboBox comboFinish;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboNode2;
+        private System.Windows.Forms.ComboBox comboNode1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button buttonExport;
+        private System.Windows.Forms.Button buttonAddSisi;
+        private System.Windows.Forms.Label labelErrorRoute;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelErrorPoint;
+        private System.Windows.Forms.Label labelErrorSisi;
+        private System.Windows.Forms.Label labelErrorFilename;
+        private System.Windows.Forms.Label label13;
     }
 }

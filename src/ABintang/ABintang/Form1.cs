@@ -104,33 +104,42 @@ namespace ABintang
             List<PointLatLng> points = new List<PointLatLng>();
             // buat variabel point, TranslatetoName() sama cek input
 
-            //JANGAN LUPA COMBOBOX EXCEPTION HANDLER
-            List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoName(input.Kamus, comboStart.SelectedItem.ToString()), g.TranslatetoName(input.Kamus, comboFinish.SelectedItem.ToString()));
-            for (int i = 0; i < Solusi.Count; i++)
+            // COMBOBOX EXCEPTION HANDLER
+            if (!string.IsNullOrEmpty(comboStart.Text) && !string.IsNullOrEmpty(comboFinish.Text))
             {
-                label3.Text += Solusi[i].Getname();
-                points.Add(new PointLatLng(Solusi[i].Getlat(), Solusi[i].Getlongt()));
-                if (i != Solusi.Count - 1)
+                labelErrorRoute.Text = "";
+                List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoName(input.Kamus, comboStart.SelectedItem.ToString()), g.TranslatetoName(input.Kamus, comboFinish.SelectedItem.ToString()));
+                for (int i = 0; i < Solusi.Count; i++)
                 {
-                    label3.Text += " -> ";
+                    label3.Text += Solusi[i].Getname();
+                    points.Add(new PointLatLng(Solusi[i].Getlat(), Solusi[i].Getlongt()));
+                    if (i != Solusi.Count - 1)
+                    {
+                        label3.Text += " -> ";
+                    }
                 }
-            }
-            label3.Text += "\nJarak =";
-            label3.Text += Convert.ToString(g.HitungJarak(input.Kamus, Solusi));
-            label3.Text += " km";
-            GMapOverlay routes = new GMapOverlay("routes");
-            GMapRoute route = new GMapRoute(points, "rute");
-            route.Stroke = new Pen(Color.Red, 3);
-            routes.Routes.Add(route);
-            map.Overlays.Add(routes);
+                label3.Text += "\nJarak =";
+                label3.Text += Convert.ToString(g.HitungJarak(input.Kamus, Solusi));
+                label3.Text += " km";
+                GMapOverlay routes = new GMapOverlay("routes");
+                GMapRoute route = new GMapRoute(points, "rute");
+                route.Stroke = new Pen(Color.Red, 3);
+                routes.Routes.Add(route);
+                map.Overlays.Add(routes);
 
-            //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
-            map.DragButton = MouseButtons.Left;
+                //GMapProvider.GoogleMap.ApiKey = AppConfig.Key;
+                map.DragButton = MouseButtons.Left;
+
+                map.Position = new PointLatLng(latitude, longitude);
+                map.MinZoom = 3;
+                map.MaxZoom = 100;
+                map.Zoom = zoom;
+            } 
+            else
+            {
+                labelErrorRoute.Text = "Node pair incomplete";
+            }
             
-            map.Position = new PointLatLng(latitude, longitude);
-            map.MinZoom = 3;
-            map.MaxZoom = 100;
-            map.Zoom = zoom;
         }
 
         private void BtnInputDir_Click(object sender, EventArgs e)
@@ -324,6 +333,11 @@ namespace ABintang
                 map2.MaxZoom = 100;
                 map2.Zoom = zoom2;
             }
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
