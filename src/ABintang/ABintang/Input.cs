@@ -8,7 +8,7 @@ namespace ABintang{
     {
         public Dictionary<int, Point> Kamus;
         public List<List<Point>> DataNode;
-        public int Node;
+        public int nodeinp;
         public List<List<String>> Data;
         public List<List<int>> hubungan;
         public List<List<string>> temp_bracket;
@@ -20,12 +20,15 @@ namespace ABintang{
             Data = FileInput(filename); //list berisi string point
             DataNode = FilePoint(Data); //list berisi point source ke point target
             Kamus = KamusData(DataNode); //Kamus berisi integer dan poinnya
-            Node = Kamus.Count;
+            nodeinp = Kamus.Count;
         }
         public Input()
         {
             Data = new List<List<string>>();
             hubungan = new List<List<int>>();
+            DataNode = new List<List<Point>>();
+            nodeinp = 0;
+            Kamus = new Dictionary<int, Point>();
         }
         /// <summary>
         /// Menghasilkan List of string berisi data point dalam string
@@ -91,7 +94,7 @@ namespace ABintang{
         private List<List<Point>> FilePoint(List<List<string>> fileinput)
         {
             List<List<Point>> bracket = new List<List<Point>>();
-            foreach(var line in fileinput)
+            foreach (var line in fileinput)
             {
                 List<Point> listofpoint = new List<Point>();
                 Point source = new Point(Convert.ToDouble(line[0], CultureInfo.InvariantCulture), Convert.ToDouble(line[1], CultureInfo.InvariantCulture), line[2]);
@@ -105,9 +108,9 @@ namespace ABintang{
         /// <summary>
         /// Mengecek apakah terdapat suatu Point di dalam list of Point
         /// </summary>
-        private bool Contains(List<Point>bahanbaku, Point line)
+        private bool Contains(List<Point> bahanbaku, Point line)
         {
-            foreach(var x in bahanbaku)
+            foreach (var x in bahanbaku)
             {
                 if (x == line)
                 {
@@ -162,10 +165,106 @@ namespace ABintang{
                 if (entry.Value.Getlat() < minlat) { minlat = entry.Value.Getlat(); }
                 if (entry.Value.Getlongt() < minlongt) { minlongt = entry.Value.Getlongt(); }
             }
-            Double lat = minlat + (maxlat - minlat)/2;
-            Double longt = minlongt + (maxlongt - minlongt)/2;
+            Double lat = minlat + (maxlat - minlat) / 2;
+            Double longt = minlongt + (maxlongt - minlongt) / 2;
             Point temp = new Point(lat, longt, "COORDS");
             return temp;
+        }
+
+        /// <summary>
+        /// Check if there is duplicate of name in Kamus
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns> True if exists duplicate, else false </returns>
+        public Boolean CheckDuplName(string name)
+        {
+            if (Kamus.Count() > 0)
+            {
+                foreach (var entry in Kamus)
+                {
+                    if (entry.Value.Getname() == name) { return true; }
+                }
+            }
+            return false;
+        }
+
+        public void AddKamusData(double lat, double lng, string name)
+        {
+            Point temp = new Point(lat, lng, name);
+            Kamus.Add(nodeinp, temp);
+            if (nodeinp == 0)
+            {
+                List<int> temp2 = new List<int>();
+                temp2.Add(0); 
+                hubungan.Add(temp2);
+            }
+            else //kalau node > 0
+            {
+                List<int> temp2 = new List<int>();
+                for (int i = 0; i < nodeinp; i++)
+                {
+                    hubungan[i].Add(0);
+                    temp2.Add(0);
+                }
+                temp2.Add(0);
+                hubungan.Add(temp2);
+            }
+            nodeinp++;
+        }
+        /// <summary>
+        /// Membersihkan class input
+        /// </summary>
+        public void ClearInputClass()
+        {
+            Kamus.Clear();
+            DataNode.Clear();
+            nodeinp = 0;
+            Data.Clear();
+            hubungan.Clear();
+        }
+        /// <summary>
+        /// Print adjacency Matrix
+        /// </summary>
+        /// <returns> string with newline, contents of adj matrix </returns>
+        public string CheckAdjMatrix()
+        {
+            string temp = "";
+            foreach (var x in Kamus)
+            {
+                temp += x.Value.Getname();
+                temp += " ";
+            }
+            temp += "\n";
+            foreach (var x in hubungan)
+            {
+                foreach (var y in x)
+                {
+                    temp += y;
+                    temp += " ";
+                }
+                temp += "\n";
+            }
+            return temp;
+        }
+        /// <summary>
+        /// Mengecek apakah terdapat sisi diantara 2 node
+        /// </summary>
+        /// <param name="a">nama node 1</param>
+        /// <param name="b">nama node 2</param>
+        /// <returns>jika ada true, else false</returns>
+        public Boolean IsSisiAda(string a, string b)
+        {
+            int n1 = Kamus.FirstOrDefault(x => x.Value.Getname() == a).Key;
+            int n2 = Kamus.FirstOrDefault(x => x.Value.Getname() == b).Key;
+            if (hubungan[n1][n2]==1) { return true; }
+            return false;
+        }
+        public void AddSisi(string a, string b)
+        {
+            int n1 = Kamus.FirstOrDefault(x => x.Value.Getname() == a).Key;
+            int n2 = Kamus.FirstOrDefault(x => x.Value.Getname() == b).Key;
+            hubungan[n1][n2] = 1;
+            hubungan[n2][n1] = 1;
         }
     }
 }

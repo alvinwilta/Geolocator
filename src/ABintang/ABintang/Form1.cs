@@ -35,8 +35,7 @@ namespace ABintang
         private double zoom2;
         //private GMapOverlay overlayTemp;
         //private GMarkerGoogle markerTemp;
-        private int node;
-        private Boolean newoverlay;
+        private PointLatLng tempPoint;
         public Form1()
         {
             InitializeComponent();
@@ -51,8 +50,8 @@ namespace ABintang
             map2.MaxZoom = 100;
             nodelist1 = new List<string>();
             nodelist2 = new List<string>();
-            node = 0;
-            newoverlay = false;
+            tempPoint = new PointLatLng();
+            input = new Input();
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -92,22 +91,21 @@ namespace ABintang
 
         private void btnGetRouteInfo_Click(object sender, EventArgs e)
         {
-            if (map.Overlays.Any(x => x.Id == "routes"))
-            {
-                GMapOverlay hapus = map.Overlays.First(x => x.Id == "routes");
-                map.Overlays.Remove(hapus);
-            }
-            latitude = map.Position.Lat;
-            longitude = map.Position.Lng;
-            zoom = map.Zoom;
-     
-            label3.Text = "";
-            List<PointLatLng> points = new List<PointLatLng>();
-            // buat variabel point, TranslatetoName() sama cek input
-
-            // COMBOBOX EXCEPTION HANDLER
             if (!string.IsNullOrEmpty(comboStart.Text) && !string.IsNullOrEmpty(comboFinish.Text))
             {
+                if (map.Overlays.Any(x => x.Id == "routes"))
+                {
+                    GMapOverlay hapus = map.Overlays.First(x => x.Id == "routes");
+                    map.Overlays.Remove(hapus);
+                }
+                latitude = map.Position.Lat;
+                longitude = map.Position.Lng;
+                zoom = map.Zoom;
+     
+                label3.Text = "";
+                List<PointLatLng> points = new List<PointLatLng>();
+                // buat variabel point, TranslatetoName() sama cek input
+            
                 labelErrorRoute.Text = "";
                 List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoName(input.Kamus, comboStart.SelectedItem.ToString()), g.TranslatetoName(input.Kamus, comboFinish.SelectedItem.ToString()));
                 for (int i = 0; i < Solusi.Count; i++)
@@ -152,7 +150,7 @@ namespace ABintang
                 // parse input
                 input = new Input(filename);
                 // initialize graph
-                g = new Graph(input.Node);
+                g = new Graph(input.nodeinp);
                 g.InputGraph(input.DataNode, input.Kamus);
                 //TODO
                 //points.Add(_points[0]);
@@ -317,11 +315,8 @@ namespace ABintang
                 longitude2 = map2.Position.Lng;
                 zoom2 = map2.Zoom;
 
-                //var point = ;
-                //MessageBox.Show(e.X + " " + e.Y);
-                //Double lat = point.Lat;
-                //Double lng = point.Lng;
-                //PointLatLng tempPoint = new PointLatLng(lat, lng);
+                var point = map2.FromLocalToLatLng(e.X, e.Y);
+                tempPoint = new PointLatLng(point.Lat, point.Lng);
                 GMarkerGoogle markerTemp = new GMarkerGoogle(map2.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.blue_dot);
                 GMapOverlay overlayTemp = new GMapOverlay("markers");
                 overlayTemp.Markers.Add(markerTemp);
@@ -364,6 +359,78 @@ namespace ABintang
                 }
                 sw.Close();
 
+            }
+        }
+
+        private void buttonAddPointManual_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textboxPointName.Text))
+            {
+                if (tempPoint == null)
+                {
+                    labelErrorPoint.Text = "No point selected!";
+                }
+                else
+                {
+                    if (input.CheckDuplName(textboxPointName.Text) )
+                    {
+                        labelErrorPoint.Text = "There are already point with that name!";
+                    }
+                    else
+                    {
+                        labelErrorPoint.Text = "";
+                        input.AddKamusData(tempPoint.Lat, tempPoint.Lng, textboxPointName.Text);
+                        comboNode1.Items.Add(textboxPointName.Text);
+                        comboNode2.Items.Add(textboxPointName.Text);
+                    }
+                }
+            }
+            else
+            {
+                labelErrorPoint.Text = "Please insert a name";
+            }
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            input.ClearInputClass();
+            map2.Overlays.Clear();
+        }
+
+        private void check_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(input.CheckAdjMatrix());
+        }
+
+        private void checkAdjMat_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(input.CheckAdjMatrix());
+        }
+
+        private void buttonAddSisi_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(comboNode1.SelectedItem.ToString()) && !string.IsNullOrEmpty(comboNode2.SelectedItem.ToString()))
+            {
+                if (comboNode1.SelectedItem.ToString() != comboNode2.SelectedItem.ToString())
+                {
+                    if (!input.IsSisiAda(comboNode1.SelectedItem.ToString(), comboNode2.SelectedItem.ToString()))
+                    {
+                        labelErrorSisi.Text = "";
+                        input.AddSisi(comboNode1.SelectedItem.ToString(), comboNode2.SelectedItem.ToString());
+                    }
+                    else
+                    {
+                        labelErrorSisi.Text = "Sisi sudah ada pada graf!";
+                    }
+                }
+                else
+                {
+                    labelErrorSisi.Text = "Tidak bisa ke diri sendiri!";
+                }
+            }
+            else
+            {
+                labelErrorSisi.Text = "Pasangan node tidak lengkap!";
             }
         }
     }
