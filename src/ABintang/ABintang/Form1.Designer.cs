@@ -50,7 +50,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.map2 = new GMap.NET.WindowsForms.GMapControl();
             this.check = new System.Windows.Forms.Button();
-            this.labelErrorExport = new System.Windows.Forms.Label();
+            this.labelExport = new System.Windows.Forms.Label();
             this.labelErrorPoint = new System.Windows.Forms.Label();
             this.labelErrorSisi = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -339,7 +339,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.check);
-            this.splitContainer2.Panel2.Controls.Add(this.labelErrorExport);
+            this.splitContainer2.Panel2.Controls.Add(this.labelExport);
             this.splitContainer2.Panel2.Controls.Add(this.labelErrorPoint);
             this.splitContainer2.Panel2.Controls.Add(this.labelErrorSisi);
             this.splitContainer2.Panel2.Controls.Add(this.label12);
@@ -409,15 +409,14 @@
             this.check.UseVisualStyleBackColor = true;
             this.check.Click += new System.EventHandler(this.check_Click);
             // 
-            // labelErrorExport
+            // labelExport
             // 
-            this.labelErrorExport.AutoSize = true;
-            this.labelErrorExport.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorExport.Location = new System.Drawing.Point(100, 412);
-            this.labelErrorExport.Name = "labelErrorExport";
-            this.labelErrorExport.Size = new System.Drawing.Size(76, 13);
-            this.labelErrorExport.TabIndex = 28;
-            this.labelErrorExport.Text = "labelException";
+            this.labelExport.AutoSize = true;
+            this.labelExport.ForeColor = System.Drawing.Color.Black;
+            this.labelExport.Location = new System.Drawing.Point(100, 412);
+            this.labelExport.Name = "labelExport";
+            this.labelExport.Size = new System.Drawing.Size(0, 13);
+            this.labelExport.TabIndex = 28;
             // 
             // labelErrorPoint
             // 
@@ -711,7 +710,7 @@
         private System.Windows.Forms.Label labelErrorPoint;
         private System.Windows.Forms.Label labelErrorSisi;
         private System.Windows.Forms.SaveFileDialog sfd;
-        private System.Windows.Forms.Label labelErrorExport;
+        private System.Windows.Forms.Label labelExport;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button check;
         private System.Windows.Forms.Button checkAdjMat;

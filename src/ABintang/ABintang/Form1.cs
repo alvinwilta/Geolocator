@@ -221,6 +221,7 @@ namespace ABintang
         private void button2_Click(object sender, EventArgs e)
         {
             //map2.DragButton = MouseButtons.Left;
+            labelExport.Text = "";
             if (checkInputValid(txtLatitude.Text) && checkInputValid(txtLongitude.Text))
             {
                 labelError2.Text = "";
@@ -246,7 +247,8 @@ namespace ABintang
 
         // default Position
         private void button3_Click(object sender, EventArgs e)
-        {         
+        {
+            labelExport.Text = "";
             map2.Position = new PointLatLng(-6.891235014541753, 107.61071274138624);
             map2.Zoom = 15;
         }
@@ -358,12 +360,15 @@ namespace ABintang
                     sw.WriteLine();
                 }
                 sw.Close();
-
+                labelExport.Text = "File has been successfully created.";
+                input.ClearInputClass();
+                map2.Overlays.Clear();
             }
         }
 
         private void buttonAddPointManual_Click(object sender, EventArgs e)
         {
+            labelExport.Text = "";
             if (!string.IsNullOrEmpty(textboxPointName.Text))
             {
                 if (tempPoint == null)
@@ -399,6 +404,7 @@ namespace ABintang
 
         private void check_Click(object sender, EventArgs e)
         {
+            labelExport.Text = "";
             MessageBox.Show(input.CheckAdjMatrix());
         }
 
@@ -409,6 +415,7 @@ namespace ABintang
 
         private void buttonAddSisi_Click(object sender, EventArgs e)
         {
+            labelExport.Text = "";
             if (!string.IsNullOrEmpty(comboNode1.SelectedItem.ToString()) && !string.IsNullOrEmpty(comboNode2.SelectedItem.ToString()))
             {
                 if (comboNode1.SelectedItem.ToString() != comboNode2.SelectedItem.ToString())
