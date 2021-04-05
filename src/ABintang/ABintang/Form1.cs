@@ -60,36 +60,12 @@ namespace ABintang
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void map_Load(object sender, EventArgs e)
         {
             map.ShowCenter = false;
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            _points.Clear();
-        }
-
+        
         private void btnGetRouteInfo_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(comboStart.Text) && !string.IsNullOrEmpty(comboFinish.Text))
@@ -104,6 +80,7 @@ namespace ABintang
                 zoom = map.Zoom;
      
                 label3.Text = "";
+                AddPathSisi1();
                 List<PointLatLng> points = new List<PointLatLng>();
                 // buat variabel point, TranslatetoName() sama cek input
             
@@ -157,6 +134,7 @@ namespace ABintang
                 //points.Add(_points[0]);
                 //points.Add(_points[1]);
                 map.Overlays.Clear();
+                AddPathSisi1();
                 foreach (var x in input.Kamus)
                 {
                     double lat2 = x.Value.Getlat();
@@ -274,11 +252,6 @@ namespace ABintang
 
         }
 
-        private void comboFinish_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboFinish_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
@@ -313,10 +286,12 @@ namespace ABintang
                 //{
                     
                 //}
-                map2.Overlays.Clear();
+                
                 latitude2 = map2.Position.Lat;
                 longitude2 = map2.Position.Lng;
                 zoom2 = map2.Zoom;
+                map2.Overlays.Clear();
+                AddPathSisi2();
                 foreach (var x in input.Kamus)
                 {
                     double lat2 = x.Value.Getlat();
@@ -460,6 +435,39 @@ namespace ABintang
                     {
                         labelErrorSisi.Text = "";
                         input.AddSisi(comboNode1.SelectedItem.ToString(), comboNode2.SelectedItem.ToString());
+                        latitude2 = map2.Position.Lat;
+                        longitude2 = map2.Position.Lng;
+                        zoom2 = map2.Zoom;
+                        map2.Overlays.Clear();
+                        AddPathSisi2(); 
+                        foreach (var x in input.Kamus)
+                        {
+                            double lat2 = x.Value.Getlat();
+                            double longt2 = x.Value.Getlongt();
+                            PointLatLng point2 = new PointLatLng(lat2, longt2);
+                            GMarkerGoogle marker2 = new GMarkerGoogle(point2, GMarkerGoogleType.blue_dot);
+                            var addresses = GetAddress(point2);
+                            if (addresses != null)
+                            {
+                                marker2.ToolTipText = x.Value.Getname() + String.Join(", ", addresses.ToArray());
+                            }
+                            else
+                            {
+                                marker2.ToolTipText = x.Value.Getname();
+                            }
+                            //Create Overlay
+                            GMapOverlay markers2 = new GMapOverlay("markers");
+
+                            //Add all available markers to overlay
+                            markers2.Markers.Add(marker2);
+
+                            //Cover Map with Overlay
+                            map2.Overlays.Add(markers2);
+                        }
+                        map2.Position = new PointLatLng(latitude2, longitude2);
+                        map2.MinZoom = 3;
+                        map2.MaxZoom = 100;
+                        map2.Zoom = zoom2;
                     }
                     else
                     {
@@ -474,6 +482,38 @@ namespace ABintang
             else
             {
                 labelErrorSisi.Text = "Pasangan node tidak lengkap!";
+            }
+        }
+
+        private void AddPathSisi1()
+        {
+            List<List<int>> solusi = input.IterasiAdjList();
+            int i = 0;
+            foreach (var sol in solusi)
+            {
+                List<PointLatLng> points = new List<PointLatLng>();
+                points.Add(new PointLatLng(input.Kamus[sol[0]].Getlat(), input.Kamus[sol[0]].Getlongt()));
+                points.Add(new PointLatLng(input.Kamus[sol[1]].Getlat(), input.Kamus[sol[1]].Getlongt()));
+                GMapOverlay routes = new GMapOverlay("routes");
+                GMapRoute route = new GMapRoute(points, "rute");
+                route.Stroke = new Pen(Color.Blue, 3);
+                routes.Routes.Add(route);
+                map.Overlays.Add(routes);
+            } 
+        }
+        private void AddPathSisi2()
+        {
+            List<List<int>> solusi = input.IterasiAdjList();
+            foreach (var sol in solusi)
+            {
+                List<PointLatLng> points = new List<PointLatLng>();
+                points.Add(new PointLatLng(input.Kamus[sol[0]].Getlat(), input.Kamus[sol[0]].Getlongt()));
+                points.Add(new PointLatLng(input.Kamus[sol[1]].Getlat(), input.Kamus[sol[1]].Getlongt()));
+                GMapOverlay routes = new GMapOverlay("routes");
+                GMapRoute route = new GMapRoute(points, "rute");
+                route.Stroke = new Pen(Color.Blue, 3);
+                routes.Routes.Add(route);
+                map2.Overlays.Add(routes);
             }
         }
     }

@@ -266,9 +266,24 @@ namespace ABintang{
             hubungan[n1][n2] = 1;
             hubungan[n2][n1] = 1;
         }
-        //public List IterasiAdjList()
-        //{
-
-        //}
+        public List<List<int>> IterasiAdjList()
+        {
+            List<List<int>> retval = new List<List<int>>();
+            List<int> temp;
+            for (int i=0; i<nodeinp; i++)
+            {
+                for (int j=nodeinp-1; j>i; j--)
+                {
+                    temp = new List<int>();
+                    if (hubungan[i][j] == 1)
+                    {
+                        temp.Add(i);
+                        temp.Add(j);
+                        retval.Add(temp);
+                    }
+                }
+            }
+            return retval;
+        }
     }
 }
