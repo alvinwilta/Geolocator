@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.map = new GMap.NET.WindowsForms.GMapControl();
             this.checkAdjMat = new System.Windows.Forms.Button();
@@ -75,6 +76,11 @@
             this.txtLatitude = new System.Windows.Forms.TextBox();
             this.labelNavigate = new System.Windows.Forms.Label();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -86,6 +92,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -102,6 +109,11 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label17);
+            this.splitContainer1.Panel2.Controls.Add(this.label16);
+            this.splitContainer1.Panel2.Controls.Add(this.label15);
+            this.splitContainer1.Panel2.Controls.Add(this.label14);
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Panel2.Controls.Add(this.checkAdjMat);
             this.splitContainer1.Panel2.Controls.Add(this.label13);
             this.splitContainer1.Panel2.Controls.Add(this.labelErrorRoute);
@@ -165,7 +177,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 42);
+            this.label13.Location = new System.Drawing.Point(17, 166);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(159, 20);
             this.label13.TabIndex = 19;
@@ -175,7 +187,7 @@
             // 
             this.labelErrorRoute.AutoSize = true;
             this.labelErrorRoute.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorRoute.Location = new System.Drawing.Point(15, 186);
+            this.labelErrorRoute.Location = new System.Drawing.Point(20, 310);
             this.labelErrorRoute.Name = "labelErrorRoute";
             this.labelErrorRoute.Size = new System.Drawing.Size(0, 13);
             this.labelErrorRoute.TabIndex = 18;
@@ -186,7 +198,7 @@
             this.comboFinish.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboFinish.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboFinish.FormattingEnabled = true;
-            this.comboFinish.Location = new System.Drawing.Point(134, 162);
+            this.comboFinish.Location = new System.Drawing.Point(139, 286);
             this.comboFinish.Name = "comboFinish";
             this.comboFinish.Size = new System.Drawing.Size(109, 21);
             this.comboFinish.TabIndex = 17;
@@ -195,7 +207,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(131, 144);
+            this.label8.Location = new System.Drawing.Point(136, 268);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 13);
             this.label8.TabIndex = 16;
@@ -204,7 +216,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 144);
+            this.label7.Location = new System.Drawing.Point(18, 268);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 14;
@@ -217,7 +229,7 @@
             this.comboStart.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboStart.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboStart.FormattingEnabled = true;
-            this.comboStart.Location = new System.Drawing.Point(16, 162);
+            this.comboStart.Location = new System.Drawing.Point(21, 286);
             this.comboStart.Name = "comboStart";
             this.comboStart.Size = new System.Drawing.Size(109, 21);
             this.comboStart.TabIndex = 13;
@@ -227,7 +239,7 @@
             // 
             this.labelError1.AutoSize = true;
             this.labelError1.ForeColor = System.Drawing.Color.Red;
-            this.labelError1.Location = new System.Drawing.Point(15, 129);
+            this.labelError1.Location = new System.Drawing.Point(20, 253);
             this.labelError1.Name = "labelError1";
             this.labelError1.Size = new System.Drawing.Size(0, 13);
             this.labelError1.TabIndex = 12;
@@ -235,7 +247,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 251);
+            this.label3.Location = new System.Drawing.Point(18, 375);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 13);
@@ -245,7 +257,7 @@
             // BtnInputDir
             // 
             this.BtnInputDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnInputDir.Location = new System.Drawing.Point(171, 100);
+            this.BtnInputDir.Location = new System.Drawing.Point(177, 224);
             this.BtnInputDir.Margin = new System.Windows.Forms.Padding(2);
             this.BtnInputDir.Name = "BtnInputDir";
             this.BtnInputDir.Size = new System.Drawing.Size(64, 19);
@@ -257,7 +269,7 @@
             // FileDir
             // 
             this.FileDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileDir.Location = new System.Drawing.Point(16, 100);
+            this.FileDir.Location = new System.Drawing.Point(22, 224);
             this.FileDir.Margin = new System.Windows.Forms.Padding(2);
             this.FileDir.Name = "FileDir";
             this.FileDir.Size = new System.Drawing.Size(145, 20);
@@ -267,7 +279,7 @@
             // 
             this.FileDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FileDirectory.AutoSize = true;
-            this.FileDirectory.Location = new System.Drawing.Point(15, 84);
+            this.FileDirectory.Location = new System.Drawing.Point(21, 208);
             this.FileDirectory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FileDirectory.Name = "FileDirectory";
             this.FileDirectory.Size = new System.Drawing.Size(68, 13);
@@ -277,7 +289,7 @@
             // btnGetRouteInfo
             // 
             this.btnGetRouteInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetRouteInfo.Location = new System.Drawing.Point(16, 223);
+            this.btnGetRouteInfo.Location = new System.Drawing.Point(22, 347);
             this.btnGetRouteInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetRouteInfo.Name = "btnGetRouteInfo";
             this.btnGetRouteInfo.Size = new System.Drawing.Size(110, 26);
@@ -638,15 +650,68 @@
             // 
             this.sfd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(104, 17);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(72, 73);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Google Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label14.Location = new System.Drawing.Point(75, 82);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(137, 30);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Geolocator";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Google Sans", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(116, 107);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(52, 12);
+            this.label15.TabIndex = 23;
+            this.label15.Text = "Created by:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Google Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(86, 121);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(110, 14);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Alvin Wilta - 13519163";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Google Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(70, 133);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(148, 14);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "Leonard Matheus - 13519215";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 514);
             this.Controls.Add(this.tabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Geolocator";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -662,6 +727,7 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -714,5 +780,10 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button check;
         private System.Windows.Forms.Button checkAdjMat;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -266,5 +266,9 @@ namespace ABintang{
             hubungan[n1][n2] = 1;
             hubungan[n2][n1] = 1;
         }
+        //public List IterasiAdjList()
+        //{
+
+        //}
     }
 }
