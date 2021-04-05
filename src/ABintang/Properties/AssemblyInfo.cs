@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ABintang")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Geolocator")]
+[assembly: AssemblyDescription("Program to experiment with A* Algorithm")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ABintang")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyProduct("Geolocator")]
+[assembly: AssemblyCopyright("Copyright © Alvin Wilta & Leonard Matheus 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
