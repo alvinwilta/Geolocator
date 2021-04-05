@@ -395,6 +395,8 @@ namespace ABintang
                 labelExport.Text = "File has been successfully created.";
                 input.ClearInputClass();
                 map2.Overlays.Clear();
+                comboNode1.Items.Clear();
+                comboNode2.Items.Clear();
             }
         }
 
@@ -432,6 +434,8 @@ namespace ABintang
         {
             input.ClearInputClass();
             map2.Overlays.Clear();
+            comboNode1.Items.Clear();
+            comboNode2.Items.Clear();
         }
 
         private void check_Click(object sender, EventArgs e)
