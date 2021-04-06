@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\bin",
+    "\\docs",
+    "\\img",
+    "\\src"
   ],
-  "SelectedNode": "\\ABintang.sln",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
