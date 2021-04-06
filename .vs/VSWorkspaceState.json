@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src\\Geolocator",
+    "\\src\\Geolocator\\Debug",
+    "\\test"
   ],
-  "SelectedNode": "\\ABintang.sln",
+  "SelectedNode": "\\test\\AlunAlunBandung.txt",
   "PreviewInSolutionExplorer": false
 }
