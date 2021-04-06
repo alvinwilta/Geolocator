@@ -79,7 +79,7 @@ namespace ABintang
                 longitude = map.Position.Lng;
                 zoom = map.Zoom;
      
-                label3.Text = "";
+                textboxOutput.Text = "";
                 AddPathSisi1();
                 List<PointLatLng> points = new List<PointLatLng>();
                 // buat variabel point, TranslatetoName() sama cek input
@@ -88,16 +88,16 @@ namespace ABintang
                 List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoName(input.Kamus, comboStart.SelectedItem.ToString()), g.TranslatetoName(input.Kamus, comboFinish.SelectedItem.ToString()));
                 for (int i = 0; i < Solusi.Count; i++)
                 {
-                    label3.Text += Solusi[i].Getname();
+                    textboxOutput.Text += Solusi[i].Getname();
                     points.Add(new PointLatLng(Solusi[i].Getlat(), Solusi[i].Getlongt()));
                     if (i != Solusi.Count - 1)
                     {
-                        label3.Text += " -> ";
+                        textboxOutput.Text += " -> ";
                     }
                 }
-                label3.Text += "\nJarak =";
-                label3.Text += Convert.ToString(g.HitungJarak(input.Kamus, Solusi));
-                label3.Text += " km";
+                textboxOutput.Text += "\nJarak =";
+                textboxOutput.Text += Convert.ToString(g.HitungJarak(input.Kamus, Solusi));
+                textboxOutput.Text += " km";
                 GMapOverlay routes = new GMapOverlay("routes");
                 GMapRoute route = new GMapRoute(points, "rute");
                 route.Stroke = new Pen(Color.Red, 3);
