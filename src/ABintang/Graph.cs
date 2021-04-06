@@ -21,7 +21,7 @@ namespace ABintang
             for (int i = 0; i < v; ++i)
             {
                 adj[i] = new List<double>();
-                for(int j = 0; j < v; j++)
+                for (int j = 0; j < v; j++)
                 {
                     adj[i].Add(0);
                 }
@@ -45,7 +45,7 @@ namespace ABintang
         void AddEdge(int v, int w, Dictionary<int, Point> Kamus)
         {
             //JANGAN LUPA
-            adj[v][w] = JarakEuclidian(TranslatetoPoint(Kamus,v), TranslatetoPoint(Kamus, w)); // Add w to v's list.
+            adj[v][w] = JarakEuclidian(TranslatetoPoint(Kamus, v), TranslatetoPoint(Kamus, w)); // Add w to v's list.
             adj[w][v] = JarakEuclidian(TranslatetoPoint(Kamus, v), TranslatetoPoint(Kamus, w)); // Add w to v's list.
         }
         /// <summary>
@@ -103,26 +103,12 @@ namespace ABintang
         }
 
         /// <summary>
-        /// Algoritma untuk membuat h(n) atau cost perkiraan ke tujuan
-        /// </summary>
-        public List<double> H_n(Dictionary<int,Point> kamus, Point target)
-        {
-            List<double> bracket = new List<double>();
-            foreach(var line in kamus)
-            {
-                bracket.Add(JarakEuclidian(line.Value, target));
-            }
-            return bracket;
-        }
-        /// <summary>
         /// Algoritma utama A* shortest path
         /// </summary>
         public List<Point> ABintangShortestPath(Dictionary<int, Point> kamus, Point start, Point target)
         {
             Node start_node = new Node(9999, TranslatetoInt(kamus, start));
             Node end_node = new Node(9999, TranslatetoInt(kamus, target));
-            //inisialisasi list h(n)
-            List<double> hn = H_n(kamus, target);
             //Inisialisasi Node Open dan Close
             List<Node> open = new List<Node>();
             List<Node> close = new List<Node>();
@@ -131,7 +117,7 @@ namespace ABintang
             while (open.Count > 0)
             {
                 Node current_node = open[0];
-                foreach(Node n in open)
+                foreach (Node n in open)
                 {
                     if (n.Getfn() < current_node.Getfn())
                     {
@@ -162,9 +148,9 @@ namespace ABintang
                     }
                     Console.WriteLine("length path :" + path.Count);
                     path.Reverse();
-                    for(int i=0; i < path.Count; i++)
+                    for (int i = 0; i < path.Count; i++)
                     {
-                         path2.Add(TranslatetoPoint(kamus, path[i]));
+                        path2.Add(TranslatetoPoint(kamus, path[i]));
                     }
                     return path2;
                 }
@@ -172,7 +158,8 @@ namespace ABintang
                 List<Node> children = new List<Node>();
                 for (int i = 0; i < V; i++)
                 {
-                    if(adj[current_node.Getposition()][i] != 0){
+                    if (adj[current_node.Getposition()][i] != 0)
+                    {
                         Node new_node = new Node(current_node.Getposition(), i);
                         children.Add(new_node);
                     }
@@ -184,13 +171,13 @@ namespace ABintang
                         continue;
 
                     child.Setgn(adj[current_node.Getposition()][child.Getposition()]);
-                    child.Sethn(hn[current_node.Getposition()]);
+                    child.Sethn(JarakEuclidian(TranslatetoPoint(kamus, child.Getposition()), target));
                     child.Setfn(child.Getgn() + child.Gethn());
 
                     //Apabila simpul anak ternyata sudah ada di list Open dan g(n) x lebih besar dari g(n) simpul anaknya
                     if (open.Any(x => x.Getposition() == child.Getposition() && x.Getgn() > child.Getgn()))
                         continue;
-                    
+
                     open.Add(child);
                 }
             }
@@ -201,14 +188,14 @@ namespace ABintang
         /// <summary>
         /// Algoritma untuk menghitung jarak dari simpul awal ke simpul tujuan A*
         /// </summary>
-        public double HitungJarak(Dictionary<int,Point> kamus, List<Point> path)
+        public double HitungJarak(Dictionary<int, Point> kamus, List<Point> path)
         {
             double jarak = 0;
-            for(int i = 0; i < path.Count-1; i++)
+            for (int i = 0; i < path.Count - 1; i++)
             {
-                jarak += adj[TranslatetoInt(kamus, path[i])][TranslatetoInt(kamus, path[i+1])];
+                jarak += adj[TranslatetoInt(kamus, path[i])][TranslatetoInt(kamus, path[i + 1])];
             }
             return jarak;
-        } 
+        }
     }
 }
