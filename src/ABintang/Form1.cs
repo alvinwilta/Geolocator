@@ -65,7 +65,7 @@ namespace ABintang
             map.ShowCenter = false;
         }
 
-        
+
         private void btnGetRouteInfo_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(comboStart.Text) && !string.IsNullOrEmpty(comboFinish.Text))
@@ -78,12 +78,12 @@ namespace ABintang
                 latitude = map.Position.Lat;
                 longitude = map.Position.Lng;
                 zoom = map.Zoom;
-     
+
                 textboxOutput.Text = "";
                 AddPathSisi1();
                 List<PointLatLng> points = new List<PointLatLng>();
                 // buat variabel point, TranslatetoName() sama cek input
-            
+
                 labelErrorRoute.Text = "";
                 List<Point> Solusi = g.ABintangShortestPath(input.Kamus, g.TranslatetoName(input.Kamus, comboStart.SelectedItem.ToString()), g.TranslatetoName(input.Kamus, comboFinish.SelectedItem.ToString()));
                 for (int i = 0; i < Solusi.Count; i++)
@@ -111,12 +111,12 @@ namespace ABintang
                 map.MinZoom = 3;
                 map.MaxZoom = 100;
                 map.Zoom = zoom;
-            } 
+            }
             else
             {
                 labelErrorRoute.Text = "Node pair incomplete";
             }
-            
+
         }
 
         private void BtnInputDir_Click(object sender, EventArgs e)
@@ -211,12 +211,12 @@ namespace ABintang
                 map2.MaxZoom = 100;
                 map2.Zoom = 15;
                 // inisialisasi input lagi tapi input kosong
-            } 
+            }
             else
             {
                 labelError2.Text = "Wrong input";
             }
-            
+
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -261,10 +261,10 @@ namespace ABintang
         {
             List<Placemark> placemarks = null;
             var statusCode = GMapProviders.GoogleMap.GetPlacemarks(point, out placemarks);
-            if(/*statusCode == GeoCoderStatusCode.G_GEO_SUCCESS &&*/ placemarks!= null)
+            if (/*statusCode == GeoCoderStatusCode.G_GEO_SUCCESS &&*/ placemarks != null)
             {
                 List<string> addresses = new List<string>();
-                foreach(var placemark in placemarks)
+                foreach (var placemark in placemarks)
                 {
                     addresses.Add(placemark.Address);
                 }
@@ -284,9 +284,9 @@ namespace ABintang
             {
                 //if (!newoverlay)
                 //{
-                    
+
                 //}
-                
+
                 latitude2 = map2.Position.Lat;
                 longitude2 = map2.Position.Lng;
                 zoom2 = map2.Zoom;
@@ -351,7 +351,7 @@ namespace ABintang
                     sw.WriteLine(Convert.ToString(a.Value.Getlat() + " " + a.Value.Getlongt() + " " + a.Value.Getname()).Replace(",", "."));
 
                 }
-                for(int x = 0; x < input.hubungan.Count; x++)
+                for (int x = 0; x < input.hubungan.Count; x++)
                 {
                     for (int y = 0; y < input.hubungan.ElementAt(x).Count; y++)
                     {
@@ -386,7 +386,7 @@ namespace ABintang
                 }
                 else
                 {
-                    if (input.CheckDuplName(textboxPointName.Text) )
+                    if (input.CheckDuplName(textboxPointName.Text))
                     {
                         labelErrorPoint.Text = "There are already point with that name!";
                     }
@@ -396,7 +396,6 @@ namespace ABintang
                         input.AddKamusData(tempPoint.Lat, tempPoint.Lng, textboxPointName.Text);
                         comboNode1.Items.Add(textboxPointName.Text);
                         comboNode2.Items.Add(textboxPointName.Text);
-                        textboxPointName.Text = "";
                     }
                 }
             }
@@ -440,7 +439,7 @@ namespace ABintang
                         longitude2 = map2.Position.Lng;
                         zoom2 = map2.Zoom;
                         map2.Overlays.Clear();
-                        AddPathSisi2(); 
+                        AddPathSisi2();
                         foreach (var x in input.Kamus)
                         {
                             double lat2 = x.Value.Getlat();
@@ -488,19 +487,18 @@ namespace ABintang
 
         private void AddPathSisi1()
         {
-            List<List<int>> solusi = input.IterasiAdjList();
-            int i = 0;
+            List<List<Point>> solusi = input.DataNode;
             foreach (var sol in solusi)
             {
                 List<PointLatLng> points = new List<PointLatLng>();
-                points.Add(new PointLatLng(input.Kamus[sol[0]].Getlat(), input.Kamus[sol[0]].Getlongt()));
-                points.Add(new PointLatLng(input.Kamus[sol[1]].Getlat(), input.Kamus[sol[1]].Getlongt()));
+                points.Add(new PointLatLng(sol[0].Getlat(), sol[0].Getlongt()));
+                points.Add(new PointLatLng(sol[1].Getlat(), sol[1].Getlongt()));
                 GMapOverlay routes = new GMapOverlay("routes");
                 GMapRoute route = new GMapRoute(points, "rute");
                 route.Stroke = new Pen(Color.Blue, 3);
                 routes.Routes.Add(route);
                 map.Overlays.Add(routes);
-            } 
+            }
         }
         private void AddPathSisi2()
         {
@@ -510,8 +508,8 @@ namespace ABintang
                 List<PointLatLng> points = new List<PointLatLng>();
                 points.Add(new PointLatLng(input.Kamus[sol[0]].Getlat(), input.Kamus[sol[0]].Getlongt()));
                 points.Add(new PointLatLng(input.Kamus[sol[1]].Getlat(), input.Kamus[sol[1]].Getlongt()));
-                GMapOverlay routes = new GMapOverlay("sisiii");
-                GMapRoute route = new GMapRoute(points, "ruteee");
+                GMapOverlay routes = new GMapOverlay("routes");
+                GMapRoute route = new GMapRoute(points, "rute");
                 route.Stroke = new Pen(Color.Blue, 3);
                 routes.Routes.Add(route);
                 map2.Overlays.Add(routes);
