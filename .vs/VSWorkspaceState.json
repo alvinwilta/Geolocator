@@ -4,8 +4,11 @@
     "\\bin",
     "\\docs",
     "\\img",
-    "\\src"
+    "\\src",
+    "\\src\\Geolocator",
+    "\\src\\Geolocator\\Debug",
+    "\\src\\Geolocator\\Release"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\src\\ABintang.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -185,7 +185,7 @@ namespace ABintang
 
                     child.Setgn(adj[current_node.Getposition()][child.Getposition()]);
                     child.Sethn(hn[current_node.Getposition()]);
-                    child.Setfn(child.Getgn() + child.Getfn());
+                    child.Setfn(child.Getgn() + child.Gethn());
 
                     //Apabila simpul anak ternyata sudah ada di list Open dan g(n) x lebih besar dari g(n) simpul anaknya
                     if (open.Any(x => x.Getposition() == child.Getposition() && x.Getgn() > child.Getgn()))
