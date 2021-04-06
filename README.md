@@ -15,12 +15,13 @@
 Algoritma A* (atau A star) dapat digunakan untuk menentukan lintasan terpendek dari suatu titik ke titik lain. Pada tugas kecil 3 ini, anda diminta menentukan lintasan terpendek berdasarakan peta Google Map jalan-jalan di kota Bandung. Dari ruas-ruas jalan di peta dibentuk graf. Simpul menyatakan persilangan jalan atau ujung jalan. Asumsikan jalan dapat dilalui dari dua arah. Bobot graf menyatakan jarak (m atau km) antar simpul. Jarak antar dua simpul dapat dihitung dari koordinat kedua simpul menggunakan rumus jarak Euclidean (berdasarkan koordinat) atau dapat menggunakan ruler di Google Map, atau cara lainnya yang disediakan oleh Google Map.
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Load File](./img/img1.png)
+
+![Create Graph](./img/img2.png)
 
 ## Technologies
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* GMap.NET.Core  - version 2.0.2.0
+* System.Data.SQLite - version 1.0.113.0
 
 ## Setup
 1. Install program menggunakan Geolocator.msi atau setup.exe pada folder bin
@@ -53,16 +54,17 @@ List of features ready
 * Melihat adjacency matrix pada graph yang sedang dibuat
 * Melihat path jalur terpendek pada map
 
-
 ## Status
 Project is: _finished_
 
 ## Inspiration
-Add here credits. Project inspired by..., based on...
+[Referensi Pembuatan Algoritma](http://informatika.stei.itb.ac.id/~rinaldi.munir/Stmik/2020-2021/Route-Planning-Bagian2-2021.pdf)
+[Referensi Implementasi API](http://www.independent-software.com/category/gmap.html)
+[Spesifikasi Tugas Kecil](http://informatika.stei.itb.ac.id/~rinaldi.munir/Stmik/2020-2021/Tugas-Kecil-3-(2021).pdf)
 
 ## Contact
 Created By:
 
-[@alvinwilta](https://github.com/alvinwilta) - 13519163
+Alvin Wilta [@alvinwilta](https://github.com/alvinwilta) - 13519163
 
-[@leomatt547](https://github.com/leomatt547) - 13519215
+Leonard Matheus [@leomatt547](https://github.com/leomatt547) - 13519215
