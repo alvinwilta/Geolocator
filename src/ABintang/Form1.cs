@@ -396,6 +396,7 @@ namespace ABintang
                         input.AddKamusData(tempPoint.Lat, tempPoint.Lng, textboxPointName.Text);
                         comboNode1.Items.Add(textboxPointName.Text);
                         comboNode2.Items.Add(textboxPointName.Text);
+                        textboxPointName.Text = "";
                     }
                 }
             }
