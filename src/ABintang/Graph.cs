@@ -93,7 +93,7 @@ namespace ABintang
             Point p = new Point();
             foreach (var entry in kamus)
             {
-                if (entry.Value.Getname()==name)
+                if (entry.Value.Getname().Equals(name))
                 {
                     p = entry.Value;
                     return p;
