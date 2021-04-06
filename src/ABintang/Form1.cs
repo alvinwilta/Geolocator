@@ -396,6 +396,7 @@ namespace ABintang
                         input.AddKamusData(tempPoint.Lat, tempPoint.Lng, textboxPointName.Text);
                         comboNode1.Items.Add(textboxPointName.Text);
                         comboNode2.Items.Add(textboxPointName.Text);
+                        textboxPointName.Text = "";
                     }
                 }
             }
@@ -509,8 +510,8 @@ namespace ABintang
                 List<PointLatLng> points = new List<PointLatLng>();
                 points.Add(new PointLatLng(input.Kamus[sol[0]].Getlat(), input.Kamus[sol[0]].Getlongt()));
                 points.Add(new PointLatLng(input.Kamus[sol[1]].Getlat(), input.Kamus[sol[1]].Getlongt()));
-                GMapOverlay routes = new GMapOverlay("routes");
-                GMapRoute route = new GMapRoute(points, "rute");
+                GMapOverlay routes = new GMapOverlay("sisiii");
+                GMapRoute route = new GMapRoute(points, "ruteee");
                 route.Stroke = new Pen(Color.Blue, 3);
                 routes.Routes.Add(route);
                 map2.Overlays.Add(routes);

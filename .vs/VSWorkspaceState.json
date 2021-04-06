@@ -1,14 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\bin",
-    "\\docs",
-    "\\img",
-    "\\src",
-    "\\src\\Geolocator",
-    "\\src\\Geolocator\\Debug",
-    "\\src\\Geolocator\\Release"
+    ""
   ],
-  "SelectedNode": "\\src\\ABintang.sln",
+  "SelectedNode": "\\ABintang.sln",
   "PreviewInSolutionExplorer": false
 }

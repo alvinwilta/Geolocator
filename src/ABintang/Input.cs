@@ -272,7 +272,7 @@ namespace ABintang{
             List<int> temp;
             for (int i=0; i<nodeinp; i++)
             {
-                for (int j=nodeinp-1; j>i; j--)
+                for (int j=nodeinp-1; j>0; j--)
                 {
                     temp = new List<int>();
                     if (hubungan[i][j] == 1)
