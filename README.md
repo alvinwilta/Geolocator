@@ -15,9 +15,9 @@
 Algoritma A* (atau A star) dapat digunakan untuk menentukan lintasan terpendek dari suatu titik ke titik lain. Pada tugas kecil 3 ini, anda diminta menentukan lintasan terpendek berdasarakan peta Google Map jalan-jalan di kota Bandung. Dari ruas-ruas jalan di peta dibentuk graf. Simpul menyatakan persilangan jalan atau ujung jalan. Asumsikan jalan dapat dilalui dari dua arah. Bobot graf menyatakan jarak (m atau km) antar simpul. Jarak antar dua simpul dapat dihitung dari koordinat kedua simpul menggunakan rumus jarak Euclidean (berdasarkan koordinat) atau dapat menggunakan ruler di Google Map, atau cara lainnya yang disediakan oleh Google Map.
 
 ## Screenshots
-![Load File](./img/img1.png)
+![Load File](https://github.com/alvinwilta/IF2211_tucil3/blob/main/img/img1.PNG)
 
-![Create Graph](./img/img2.png)
+![Create Graph](https://github.com/alvinwilta/IF2211_tucil3/blob/main/img/img2.PNG)
 
 ## Technologies
 * GMap.NET.Core  - version 2.0.2.0
@@ -59,7 +59,9 @@ Project is: _finished_
 
 ## Inspiration
 [Referensi Pembuatan Algoritma](http://informatika.stei.itb.ac.id/~rinaldi.munir/Stmik/2020-2021/Route-Planning-Bagian2-2021.pdf)
+
 [Referensi Implementasi API](http://www.independent-software.com/category/gmap.html)
+
 [Spesifikasi Tugas Kecil](http://informatika.stei.itb.ac.id/~rinaldi.munir/Stmik/2020-2021/Tugas-Kecil-3-(2021).pdf)
 
 ## Contact
